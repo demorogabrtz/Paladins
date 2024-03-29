@@ -15,6 +15,7 @@ Other changes:
 - Retexture Aeternium Claymore
 - Staves and Wands now all come with tier 0 spell, all of them are now able to cast from spell books
 - Fix spanish translation
+- Remove loot config, replaced by `config/rpg_series/loot.json`
 
 # 1.0.5
 

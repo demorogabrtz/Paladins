@@ -39,13 +39,6 @@ public class PaladinsMod implements ModInitializer {
             .setDirectory(ID)
             .sanitize(true)
             .build();
-    public static ConfigManager<LootConfig> lootConfig = new ConfigManager<>
-            ("loot_v2", Default.lootConfig)
-            .builder()
-            .setDirectory(ID)
-            .sanitize(true)
-            .constrain(LootConfig::constrainValues)
-            .build();
     public static ConfigManager<StructurePoolConfig> villageConfig = new ConfigManager<>
             ("villages", Default.villageConfig)
             .builder()
@@ -61,7 +54,6 @@ public class PaladinsMod implements ModInitializer {
             .build();
 
     public void onInitialize() {
-        lootConfig.refresh();
         itemConfig.refresh();
         effectsConfig.refresh();
         Group.PALADINS = FabricItemGroup.builder()
@@ -83,9 +75,6 @@ public class PaladinsMod implements ModInitializer {
     }
 
     private void subscribeEvents() {
-        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            LootHelper.configure(id, tableBuilder, PaladinsMod.lootConfig.value, PaladinItems.entries);
-        });
     }
 
     static {

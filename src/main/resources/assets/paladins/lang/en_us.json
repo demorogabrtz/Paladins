@@ -81,6 +81,8 @@
   "spell.paladins.barrier.name": "Barrier",
   "spell.paladins.barrier.description": "Summons a circular barrier, protecting you and allies from projectiles, magic or enemies intruding the area.",
 
+  "entity.paladins.barrier": "Barrier",
+  "entity.paladins.battle_banner": "Battle Banner",
   "entity.minecraft.villager.monk": "Monk",
   "entity.minecraft.villager.paladins:monk": "Monk",
   "block.paladins.monk_workbench": "Monk Workbench",

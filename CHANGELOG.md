@@ -1,6 +1,7 @@
 # 1.1.1
 
 - Fix Aeternium claymore texture gaps
+- Improve Battle Banner render effect
 
 # 1.1.0
 

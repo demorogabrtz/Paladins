@@ -45,6 +45,7 @@
 
   "item.paladins.acolyte_wand": "Bacchetta dell'accolito",
   "item.paladins.holy_wand": "Bacchetta sacra",
+  "item.paladins.diamond_holy_wand": "Bacchetta sacra di diamante",  
   "item.paladins.netherite_holy_wand": "Bacchetta sacra di netherite",
 
   "item.paladins.holy_staff": "Staffa sacra",
@@ -62,6 +63,10 @@
   "spell.paladins.judgement.description": "Colpisce il tuo bersaglio e i nemici intorno ad esso, entro {impact_range} blocchi, causando fino a {damage} danni e stordendoli per {effect_duration} secondi.",
   "effect.paladins.judgement": "Stordimento",
   "effect.paladins.judgement.description": "Previene il movimento e le azioni",  
+  "spell.paladins.battle_banner.name": "Stendardo di battaglia",
+  "spell.paladins.battle_banner.description": "Aumenta la velocità d'attacco e la resistenza al contraccolpo per te e gli alleati nelle vicinanze per {cloud_duration} secondi.",
+  "effect.paladins.battle_banner": "Stendardo della battaglia",
+  "effect.paladins.battle_banner.description": "Aumenta la velocità d'attacco e la resistenza al contraccolpo",  
 
   "spell.paladins.heal.name": "Cura",
   "spell.paladins.heal.description": "Cura te o un tuo alleato di {heal} HP.",
@@ -72,11 +77,16 @@
   "spell.paladins.circle_of_healing.name": "Circolo curativo",
   "spell.paladins.circle_of_healing.description": "Cura te e i bersagli alleati intorno a te di {heal} e applica un po' di assorbimento per {effect_duration} secondi.",
   "effect.paladins.priest_absorption": "Assorbimento",
-  "effect.paladins.priest_absorption.description": "Assorbe un pò dei danni in arrivo",  
+  "effect.paladins.priest_absorption.description": "Assorbe un pò dei danni in arrivo",
+  "spell.paladins.barrier.name": "Barriera",
+  "spell.paladins.barrier.description": "Evoca una barriera circolare, che protegge te e i tuoi alleati da proiettili, magia o nemici che entrano nell'area.",  
 
+  "entity.paladins.barrier": "Barriera",
+  "entity.paladins.battle_banner": "Stendardo della battaglia",
   "entity.minecraft.villager.monk": "Monaco",
   "entity.minecraft.villager.paladins:monk": "Monaco",
   "block.paladins.monk_workbench": "Banco del monaco",
+  "block.paladins.monk_workbench.hint": "Banco da lavoro per villici monaci.",  
 
   "advancements.rpg_classes.obtain_healing_rune.title": "Via del chierico",
   "advancements.rpg_classes.obtain_healing_rune.description": "Ottieni una runa curativa",

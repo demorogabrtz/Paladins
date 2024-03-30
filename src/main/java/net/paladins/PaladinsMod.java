@@ -3,7 +3,6 @@ package net.paladins;
 import net.fabric_extras.structure_pool.api.StructurePoolConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.SpawnGroup;
@@ -20,14 +19,11 @@ import net.paladins.entity.BannerEntity;
 import net.paladins.entity.BarrierEntity;
 import net.paladins.item.Group;
 import net.paladins.item.PaladinBooks;
-import net.paladins.item.PaladinItems;
 import net.paladins.item.Weapons;
 import net.paladins.item.armor.Armors;
 import net.paladins.util.SoundHelper;
 import net.paladins.village.PaladinVillagers;
 import net.spell_engine.api.item.ItemConfig;
-import net.spell_engine.api.loot.LootConfig;
-import net.spell_engine.api.loot.LootHelper;
 import net.tinyconfig.ConfigManager;
 
 public class PaladinsMod implements ModInitializer {

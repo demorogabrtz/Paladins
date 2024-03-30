@@ -2,6 +2,7 @@
 
 - Fix Aeternium claymore texture gaps
 - Improve Battle Banner render effect
+- Battle Banner range affected by healing power
 
 # 1.1.0
 

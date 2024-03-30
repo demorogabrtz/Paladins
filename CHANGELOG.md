@@ -1,6 +1,6 @@
 # 1.1.1
 
-- 
+- Fix Aeternium claymore texture gaps
 
 # 1.1.0
 

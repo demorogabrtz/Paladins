@@ -1,5 +1,7 @@
 # 1.1.3
 
+- Fix Battle Banner not rendering properly
+- Improve Battle Banner spell tooltip, to include range
 - Update Italian translation, thanks to @Zano1999
 
 # 1.1.2

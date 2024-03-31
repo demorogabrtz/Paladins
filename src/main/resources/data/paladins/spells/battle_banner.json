@@ -18,19 +18,19 @@
       "cloud": {
         "volume": {
           "radius": 3,
+          "extra_radius" : {
+            "power_coefficient": 1,
+            "power_cap": 4
+          },
           "area": {
             "vertical_range_multiplier": 0.3
           }
-        },
-        "extra_radius" : {
-          "power_coefficient": 1,
-          "power_cap": 4
         },
         "presence_sound": {
           "id": "paladins:battle_banner_presence",
           "randomness": 0
         },
-        "impact_tick_interval": 5,
+        "impact_tick_interval": 10,
         "time_to_live_seconds": 10,
         "client_data": {
           "light_level": 14,
@@ -81,7 +81,7 @@
         "type": "STATUS_EFFECT",
         "status_effect": {
           "effect_id": "paladins:battle_banner",
-          "duration": 3,
+          "duration": 2,
           "apply_mode": "SET",
           "amplifier": 0,
           "show_particles": false

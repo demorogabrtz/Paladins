@@ -1,3 +1,7 @@
+# 1.1.2
+
+- Fix Barrier entity causing server side launch crash
+
 # 1.1.1
 
 - Fix Aeternium claymore texture gaps

@@ -18,6 +18,7 @@ import net.spell_engine.api.entity.SpellSpawnedEntity;
 import net.spell_engine.api.entity.TwoWayCollisionChecker;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.internals.SpellRegistry;
+import net.spell_engine.utils.SoundPlayerWorld;
 import net.spell_engine.utils.TargetHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -170,12 +171,11 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
         if (spell == null) {
             return;
         }
-        if (this.getWorld().isClient()) {
+        var world = this.getWorld();
+        if (world.isClient()) {
             // Client
             if (!idleSoundFired) {
-                var clientWorld = (ClientWorld) this.getWorld();
-                var player = MinecraftClient.getInstance().player;
-                clientWorld.playSoundFromEntity(player, this, idleSound, SoundCategory.PLAYERS, 1F, 1F);
+                ((SoundPlayerWorld)world).playSoundFromEntity(this, idleSound, SoundCategory.PLAYERS, 1F, 1F);
                 idleSoundFired = true;
             }
         } else {

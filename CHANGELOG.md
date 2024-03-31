@@ -1,3 +1,7 @@
+# 1.1.3
+
+- Update Italian translation, thanks to @Zano1999
+
 # 1.1.2
 
 - Fix Barrier entity causing server side launch crash

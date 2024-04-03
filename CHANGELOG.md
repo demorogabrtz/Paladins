@@ -1,3 +1,7 @@
+# 1.2.0
+
+- Migrate to latest Spell Power Attributes API
+
 # 1.1.3
 
 - Fix Battle Banner not rendering properly

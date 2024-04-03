@@ -11,7 +11,7 @@ import net.paladins.PaladinsMod;
 import net.spell_engine.api.effect.ActionImpairing;
 import net.spell_engine.api.effect.EntityActionsAllowed;
 import net.spell_engine.api.effect.Synchronized;
-import net.spell_power.api.attributes.EntityAttributes_SpellPower;
+import net.spell_power.api.SpellPowerMechanics;
 
 public class Effects {
     public static StatusEffect DIVINE_PROTECTION = new DivineProtectionStatusEffect(StatusEffectCategory.BENEFICIAL, 0x66ccff);
@@ -25,7 +25,7 @@ public class Effects {
                         "052f3166-8a43-11ed-a1eb-0242ac120002",
                         PaladinsMod.effectsConfig.value.battle_banner_attack_speed_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
-                .addAttributeModifier(EntityAttributes_SpellPower.HASTE,
+                .addAttributeModifier(SpellPowerMechanics.HASTE.attribute,
                         "052f3166-8a43-11ed-a1eb-0242ac120002",
                         PaladinsMod.effectsConfig.value.battle_banner_spell_haste_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)

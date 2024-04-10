@@ -1,6 +1,7 @@
 # 1.2.0
 
 - Migrate to latest Spell Power Attributes API
+- Battle Banner now also provides ranged attack haste (configurable)
 
 # 1.1.3
 

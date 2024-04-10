@@ -19,21 +19,30 @@ public class Effects {
     public static StatusEffect JUDGEMENT = new JudgementStatusEffect(StatusEffectCategory.HARMFUL, 0xffffcc);
     public static StatusEffect ABSORPTION = new PriestAbsorptionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
 
+    public static String BATTLE_BANNER_BOOST_UUID = "052f3166-8a43-11ed-a1eb-0242ac120002";
+
     public static void register() {
         BATTLE_BANNER
                 .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,
-                        "052f3166-8a43-11ed-a1eb-0242ac120002",
+                        BATTLE_BANNER_BOOST_UUID,
                         PaladinsMod.effectsConfig.value.battle_banner_attack_speed_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(SpellPowerMechanics.HASTE.attribute,
-                        "052f3166-8a43-11ed-a1eb-0242ac120002",
+                        BATTLE_BANNER_BOOST_UUID,
                         PaladinsMod.effectsConfig.value.battle_banner_spell_haste_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
-                        "052f3166-8a43-11ed-a1eb-0242ac120002",
+                        BATTLE_BANNER_BOOST_UUID,
                         PaladinsMod.effectsConfig.value.battle_banner_knockback_resistance_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
         ;
+        var rangedHasteAttribute = Registries.ATTRIBUTE.get(new Identifier("ranged_weapon", "haste"));
+        if (rangedHasteAttribute != null) {
+            BATTLE_BANNER.addAttributeModifier(rangedHasteAttribute,
+                    BATTLE_BANNER_BOOST_UUID,
+                    PaladinsMod.effectsConfig.value.battle_banner_ranged_haste_bonus,
+                    EntityAttributeModifier.Operation.MULTIPLY_BASE);
+        }
 
         Synchronized.configure(DIVINE_PROTECTION, true);
         Synchronized.configure(JUDGEMENT, true);

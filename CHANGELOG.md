@@ -1,3 +1,8 @@
+# 1.2.1
+
+- Update claymore textures
+- Add Ruby Claymore
+
 # 1.2.0
 
 - Migrate to latest Spell Power Attributes API

@@ -8,6 +8,10 @@
     {
       "id": "paladins:aeternium_claymore",
       "required": false
+    },
+    {
+      "id": "paladins:ruby_claymore",
+      "required": false
     }
   ]
 }

@@ -182,6 +182,8 @@ public class Weapons {
             staff("betternether", "ruby_holy_staff",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betternether:nether_ruby")))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 6));
+            claymore("betterend", "ruby_claymore",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betternether:nether_ruby")), 12);
         }
         if (FabricLoader.getInstance().isModLoaded("betterend")) {
             claymore("betterend", "aeternium_claymore",

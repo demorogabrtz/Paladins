@@ -25,22 +25,22 @@ public class Effects {
         BATTLE_BANNER
                 .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,
                         BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.effectsConfig.value.battle_banner_attack_speed_bonus,
+                        PaladinsMod.tweaksConfig.value.battle_banner_attack_speed_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(SpellPowerMechanics.HASTE.attribute,
                         BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.effectsConfig.value.battle_banner_spell_haste_bonus,
+                        PaladinsMod.tweaksConfig.value.battle_banner_spell_haste_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
                         BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.effectsConfig.value.battle_banner_knockback_resistance_bonus,
+                        PaladinsMod.tweaksConfig.value.battle_banner_knockback_resistance_bonus,
                         EntityAttributeModifier.Operation.MULTIPLY_BASE)
         ;
         var rangedHasteAttribute = Registries.ATTRIBUTE.get(new Identifier("ranged_weapon", "haste"));
         if (rangedHasteAttribute != null) {
             BATTLE_BANNER.addAttributeModifier(rangedHasteAttribute,
                     BATTLE_BANNER_BOOST_UUID,
-                    PaladinsMod.effectsConfig.value.battle_banner_ranged_haste_bonus,
+                    PaladinsMod.tweaksConfig.value.battle_banner_ranged_haste_bonus,
                     EntityAttributeModifier.Operation.MULTIPLY_BASE);
         }
 

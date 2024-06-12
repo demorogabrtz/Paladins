@@ -1,7 +1,8 @@
 # 1.2.1
 
 - Update claymore textures
-- Add Ruby Claymore
+- Add new Ruby weapons: Claymore, Great Hammer, Mace
+- Add new Aerternium weapons: Great Hammer, Mace
 - Update Fabric Loader to 15+ for embedded MixinExtras
 
 # 1.2.0

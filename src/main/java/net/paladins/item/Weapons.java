@@ -35,18 +35,23 @@ public class Weapons {
         return entry;
     }
 
-    private static Supplier<Ingredient> ingredient(String idString) {
-        return ingredient(idString, Items.DIAMOND);
+    private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
+        var id = new Identifier(idString);
+        if (requirement) {
+            return () -> {
+                return Ingredient.ofItems(fallback);
+            };
+        } else {
+            return () -> {
+                var item = Registries.ITEM.get(id);
+                var ingredient = item != null ? item : fallback;
+                return Ingredient.ofItems(ingredient);
+            };
+        }
     }
 
-    private static Supplier<Ingredient> ingredient(String idString, Item fallback) {
-        var id = new Identifier(idString);
-        return () -> {
-            var item = Registries.ITEM.get(id);
-            var ingredient = item != null ? item : fallback;
-            return Ingredient.ofItems(ingredient);
-        };
-    }
+    private static final String BETTER_END = "betterend";
+    private static final String BETTER_NETHER = "betternether";
 
     // MARK: Claymores
 
@@ -178,18 +183,23 @@ public class Weapons {
     // MARK: Register
 
     public static void register(Map<String, ItemConfig.Weapon> configs) {
-        if (FabricLoader.getInstance().isModLoaded("betternether")) {
+        if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_NETHER)) {
+            var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
             staff("betternether", "ruby_holy_staff",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betternether:nether_ruby")))
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 6));
-            claymore("betterend", "ruby_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betternether:nether_ruby")), 12);
+
+            claymore("ruby_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 12);
+            hammer("ruby_great_hammer",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 14);
+            mace("ruby_mace",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 10F);
         }
-        if (FabricLoader.getInstance().isModLoaded("betterend")) {
-            claymore("betterend", "aeternium_claymore",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betterend:aeternium_ingot")), 12);
-            hammer("betterend", "aeternium_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, ingredient("betterend:aeternium_ingot")), 14);
+        if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_END)) {
+            var repair = ingredient("betterend:aeternium_ingot", FabricLoader.getInstance().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
+            claymore("aeternium_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 12);
+            hammer("aeternium_great_hammer", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 14);
+            mace("aeternium_mace", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 10F);
         }
 
         Weapon.register(configs, entries, Group.KEY);

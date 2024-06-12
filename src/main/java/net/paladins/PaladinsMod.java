@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.paladins.block.PaladinBlocks;
 import net.paladins.config.Default;
-import net.paladins.config.EffectsConfig;
+import net.paladins.config.TweaksConfig;
 import net.paladins.effect.Effects;
 import net.paladins.entity.BannerEntity;
 import net.paladins.entity.BarrierEntity;
@@ -30,7 +30,7 @@ public class PaladinsMod implements ModInitializer {
     public static final String ID = "paladins";
 
     public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<>
-            ("items_v3", Default.itemConfig)
+            ("items_v4", Default.itemConfig)
             .builder()
             .setDirectory(ID)
             .sanitize(true)
@@ -42,8 +42,8 @@ public class PaladinsMod implements ModInitializer {
             .sanitize(true)
             .build();
 
-    public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-            ("effects", new EffectsConfig())
+    public static ConfigManager<TweaksConfig> tweaksConfig = new ConfigManager<>
+            ("tweaks", new TweaksConfig())
             .builder()
             .setDirectory(ID)
             .sanitize(true)
@@ -51,7 +51,7 @@ public class PaladinsMod implements ModInitializer {
 
     public void onInitialize() {
         itemConfig.refresh();
-        effectsConfig.refresh();
+        tweaksConfig.refresh();
         Group.PALADINS = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Armors.paladinArmorSet_t2.head))
                 .displayName(Text.translatable("itemGroup.paladins.general"))

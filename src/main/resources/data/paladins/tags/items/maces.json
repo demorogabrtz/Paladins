@@ -3,6 +3,14 @@
     "paladins:iron_mace",
     "paladins:golden_mace",
     "paladins:diamond_mace",
-    "paladins:netherite_mace"
+    "paladins:netherite_mace",
+    {
+      "id": "paladins:aeternium_mace",
+      "required": false
+    },
+    {
+      "id": "paladins:ruby_mace",
+      "required": false
+    }
   ]
 }

@@ -3,6 +3,7 @@
 - Update claymore textures
 - Add new Ruby weapons: Claymore, Great Hammer, Mace
 - Add new Aerternium weapons: Great Hammer, Mace
+- Rebalance melee weapon attributes
 - Update Fabric Loader to 15+ for embedded MixinExtras
 
 # 1.2.0

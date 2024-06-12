@@ -68,15 +68,15 @@ public class Weapons {
     }
 
     public static final Weapon.Entry stone_claymore = claymore("stone_claymore",
-            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.ofItems(Items.COBBLESTONE)), 7.5F);
+            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.ofItems(Items.COBBLESTONE)), 6.8F);
     public static final Weapon.Entry iron_claymore = claymore("iron_claymore",
-            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 8F);
+            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 8.3F);
     public static final Weapon.Entry golden_claymore = claymore("golden_claymore",
-            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 5F);
+            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 5.2F);
     public static final Weapon.Entry diamond_claymore = claymore("diamond_claymore",
-            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 9.5F);
+            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 9.9F);
     public static final Weapon.Entry netherite_claymore = claymore("netherite_claymore",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 11F);
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 11.5F);
 
     // MARK: Hammers
 
@@ -93,17 +93,17 @@ public class Weapons {
     }
 
     public static final Weapon.Entry wooden_great_hammer = hammer("wooden_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.WOOD, () -> Ingredient.fromTag(ItemTags.PLANKS)), 5F);
+            Weapon.CustomMaterial.matching(ToolMaterials.WOOD, () -> Ingredient.fromTag(ItemTags.PLANKS)), 6.6F);
     public static final Weapon.Entry stone_great_hammer = hammer("stone_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)), 8F);
+            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)), 8.5F);
     public static final Weapon.Entry iron_great_hammer = hammer("iron_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 10F);
+            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 10.3F);
     public static final Weapon.Entry golden_great_hammer = hammer("golden_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 10F);
+            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 6.6F);
     public static final Weapon.Entry diamond_great_hammer = hammer("diamond_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 11F);
+            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 12.2F);
     public static final Weapon.Entry netherite_great_hammer = hammer("netherite_great_hammer",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 13F);
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 14.1F);
 
 
     // MARK: Maces
@@ -124,13 +124,13 @@ public class Weapons {
 //            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.ofItems(Items.COBBLESTONE)), 5F)
 //            .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 2));
     public static final Weapon.Entry iron_mace = mace("iron_mace",
-            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 6F);
+            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 7F);
     public static final Weapon.Entry golden_mace = mace("golden_mace",
-            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 5F);
+            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 4.3F);
     public static final Weapon.Entry diamond_mace = mace("diamond_mace",
-            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 8F);
+            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 8.3F);
     public static final Weapon.Entry netherite_mace = mace("netherite_mace",
-            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 9F);
+            Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 9.6F);
 
     // MARK: Wands
 
@@ -189,17 +189,15 @@ public class Weapons {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 6));
 
-            claymore("ruby_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 12);
-            hammer("ruby_great_hammer",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 14);
-            mace("ruby_mace",
-                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 10F);
+            claymore("ruby_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 13F);
+            hammer("ruby_great_hammer", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 16F);
+            mace("ruby_mace", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 11F);
         }
         if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_END)) {
             var repair = ingredient("betterend:aeternium_ingot", FabricLoader.getInstance().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
-            claymore("aeternium_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 12);
-            hammer("aeternium_great_hammer", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 14);
-            mace("aeternium_mace", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 10F);
+            claymore("aeternium_claymore", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 13F);
+            hammer("aeternium_great_hammer", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 16F);
+            mace("aeternium_mace", Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 11F);
         }
 
         Weapon.register(configs, entries, Group.KEY);

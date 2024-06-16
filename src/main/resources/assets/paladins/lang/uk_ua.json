@@ -75,10 +75,10 @@
   "entity.minecraft.villager.paladins:monk": "Чернець",
   "block.paladins.monk_workbench": "Чернечий верстак",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Шлях зцілення",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Отримайте зцілювальну руну",
-  "advancements.rpg_classes.paladin_mastery.title": "Час правосуддя",
-  "advancements.rpg_classes.paladin_mastery.description": "Отримайте всі закляття паладина",
-  "advancements.rpg_classes.priest_mastery.title": "Слуга Орі",
-  "advancements.rpg_classes.priest_mastery.description": "Отримайте всі закляття священника"
+  "advancements.rpg_series.obtain_healing_rune.title": "Шлях зцілення",
+  "advancements.rpg_series.obtain_healing_rune.description": "Отримайте зцілювальну руну",
+  "advancements.rpg_series.spell_master_paladin.title": "Час правосуддя",
+  "advancements.rpg_series.spell_master_paladin.description": "Отримайте всі закляття паладина",
+  "advancements.rpg_series.spell_master_priest.title": "Слуга Орі",
+  "advancements.rpg_series.spell_master_priest.description": "Отримайте всі закляття священника"
 }

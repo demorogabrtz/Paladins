@@ -92,10 +92,21 @@
   "block.paladins.monk_workbench": "Monk Workbench",
   "block.paladins.monk_workbench.hint": "Workbench for Monk Villagers.",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Path of Healing",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Obtain a Healing Rune",
-  "advancements.rpg_classes.paladin_mastery.title": "Judgement Time",
-  "advancements.rpg_classes.paladin_mastery.description": "Obtain all Paladin Spells",
-  "advancements.rpg_classes.priest_mastery.title": "Servant of the Ori",
-  "advancements.rpg_classes.priest_mastery.description": "Obtain all Priest Spells"
+  "advancements.rpg_series.path_choose_paladin.title": "Path of Justice",
+  "advancements.rpg_series.path_choose_paladin.description": "Create a Paladin Libram",
+  "advancements.rpg_series.path_choose_priest.title": "Path of Light",
+  "advancements.rpg_series.path_choose_priest.description": "Create a Holy Book",
+
+  "advancements.rpg_series.spell_novice_paladin.title": "Ardent Defender",
+  "advancements.rpg_series.spell_novice_paladin.description": "Obtain your first Paladin Spell",
+  "advancements.rpg_series.spell_novice_priest.title": "Promise of Ascension",
+  "advancements.rpg_series.spell_novice_priest.description": "Obtain your first Priest Spell",
+
+  "advancements.rpg_series.spell_master_paladin.title": "Judgement Time",
+  "advancements.rpg_series.spell_master_paladin.description": "Obtain all Paladin Spells",
+  "advancements.rpg_series.spell_master_priest.title": "Servant of the Ori",
+  "advancements.rpg_series.spell_master_priest.description": "Obtain all Priest Spells",
+
+  "advancements.rpg_series.obtain_healing_rune.title": "Path of Healing",
+  "advancements.rpg_series.obtain_healing_rune.description": "Obtain a Healing Rune"
 }

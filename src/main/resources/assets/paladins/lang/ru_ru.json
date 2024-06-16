@@ -76,10 +76,10 @@
   "block.paladins.monk_workbench": "Монашский стол",
   "block.paladins.monk_workbench.hint": "Рабочее место монаха",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Истинный путь",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Получите руну исцеления",
-  "advancements.rpg_classes.paladin_mastery.title": "Бей супастатов...",
-  "advancements.rpg_classes.paladin_mastery.description": "Заполучите все умения паладина",
-  "advancements.rpg_classes.priest_mastery.title": "Воистину воскрес!",
-  "advancements.rpg_classes.priest_mastery.description": "Заполучите все умения священника"
+  "advancements.rpg_series.obtain_healing_rune.title": "Истинный путь",
+  "advancements.rpg_series.obtain_healing_rune.description": "Получите руну исцеления",
+  "advancements.rpg_series.spell_master_paladin.title": "Бей супастатов...",
+  "advancements.rpg_series.spell_master_paladin.description": "Заполучите все умения паладина",
+  "advancements.rpg_series.spell_master_priest.title": "Воистину воскрес!",
+  "advancements.rpg_series.spell_master_priest.description": "Заполучите все умения священника"
 }

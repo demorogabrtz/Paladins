@@ -88,10 +88,10 @@
   "block.paladins.monk_workbench": "Banco del monaco",
   "block.paladins.monk_workbench.hint": "Banco da lavoro per villici monaci.",  
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Via del chierico",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Ottieni una runa curativa",
-  "advancements.rpg_classes.paladin_mastery.title": "Tempo del giudizio",
-  "advancements.rpg_classes.paladin_mastery.description": "Ottieni tutte le magie del paladino",
-  "advancements.rpg_classes.priest_mastery.title": "Servo degli Ori",
-  "advancements.rpg_classes.priest_mastery.description": "Ottieni tutte le magie da chierico"
+  "advancements.rpg_series.obtain_healing_rune.title": "Via del chierico",
+  "advancements.rpg_series.obtain_healing_rune.description": "Ottieni una runa curativa",
+  "advancements.rpg_series.spell_master_paladin.title": "Tempo del giudizio",
+  "advancements.rpg_series.spell_master_paladin.description": "Ottieni tutte le magie del paladino",
+  "advancements.rpg_series.spell_master_priest.title": "Servo degli Ori",
+  "advancements.rpg_series.spell_master_priest.description": "Ottieni tutte le magie da chierico"
 }

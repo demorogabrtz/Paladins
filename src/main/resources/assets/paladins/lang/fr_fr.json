@@ -88,10 +88,10 @@
   "block.paladins.monk_workbench": "Établi du Moine",
   "block.paladins.monk_workbench.hint": "Établi pour les Moines Villageois.",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Chemin de la Guérison",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Obtenir une Rune de Guérison",
-  "advancements.rpg_classes.paladin_mastery.title": "Heure du Jugement",
-  "advancements.rpg_classes.paladin_mastery.description": "Obtenir tous les Sorts de Paladin",
-  "advancements.rpg_classes.priest_mastery.title": "Serviteur des Ori",
-  "advancements.rpg_classes.priest_mastery.description": "Obtenir tous les Sorts de Prêtre"
+  "advancements.rpg_series.obtain_healing_rune.title": "Chemin de la Guérison",
+  "advancements.rpg_series.obtain_healing_rune.description": "Obtenir une Rune de Guérison",
+  "advancements.rpg_series.spell_master_paladin.title": "Heure du Jugement",
+  "advancements.rpg_series.spell_master_paladin.description": "Obtenir tous les Sorts de Paladin",
+  "advancements.rpg_series.spell_master_priest.title": "Serviteur des Ori",
+  "advancements.rpg_series.spell_master_priest.description": "Obtenir tous les Sorts de Prêtre"
 }

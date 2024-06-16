@@ -1,32 +1,32 @@
 {
   "display": {
     "icon": {
-      "item": "paladins:golden_great_hammer"
+      "item": "paladins:acolyte_wand"
     },
     "title": {
-      "translate": "advancements.rpg_classes.paladin_mastery.title"
+      "translate": "advancements.rpg_series.spell_novice_priest.title"
     },
     "description": {
-      "translate": "advancements.rpg_classes.paladin_mastery.description"
+      "translate": "advancements.rpg_series.spell_novice_priest.description"
     },
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "rpg_classes:obtain_healing_rune",
+  "parent": "rpg_series:path_choose_priest",
   "criteria": {
-    "cast": {
+    "bind": {
       "trigger": "spell_engine:spell_binding",
       "conditions": {
-        "complete": true,
-        "spell_pool": "paladins:paladin"
+        "complete": false,
+        "spell_pool": "paladins:priest"
       }
     }
   },
   "requirements": [
     [
-      "cast"
+      "bind"
     ]
   ]
 }

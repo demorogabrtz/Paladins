@@ -79,10 +79,10 @@
   "block.paladins.monk_workbench": "修士工作台",
   "block.paladins.monk_workbench.hint": "修士村民的工作台。",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "治愈之道",
-  "advancements.rpg_classes.obtain_healing_rune.description": "获得一个治疗符文",
-  "advancements.rpg_classes.paladin_mastery.title": "审判时刻",
-  "advancements.rpg_classes.paladin_mastery.description": "获得骑士全部法术",
-  "advancements.rpg_classes.priest_mastery.title": "侍于光明",
-  "advancements.rpg_classes.priest_mastery.description": "获得牧师全部法术"
+  "advancements.rpg_series.obtain_healing_rune.title": "治愈之道",
+  "advancements.rpg_series.obtain_healing_rune.description": "获得一个治疗符文",
+  "advancements.rpg_series.spell_master_paladin.title": "审判时刻",
+  "advancements.rpg_series.spell_master_paladin.description": "获得骑士全部法术",
+  "advancements.rpg_series.spell_master_priest.title": "侍于光明",
+  "advancements.rpg_series.spell_master_priest.description": "获得牧师全部法术"
 }

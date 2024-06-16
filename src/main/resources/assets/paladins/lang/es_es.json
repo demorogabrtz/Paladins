@@ -79,10 +79,10 @@
   "block.paladins.monk_workbench": "Banco de trabajo del Monje",
   "block.paladins.monk_workbench.hint": "Banco de trabajo para aldeanos Monjes.",
 
-  "advancements.rpg_classes.obtain_healing_rune.title": "Camino de Sanación",
-  "advancements.rpg_classes.obtain_healing_rune.description": "Obtén una Runa de Sanación",
-  "advancements.rpg_classes.paladin_mastery.title": "Tiempo del Juicio",
-  "advancements.rpg_classes.paladin_mastery.description": "Obtén todos los hechizos de Paladín",
-  "advancements.rpg_classes.priest_mastery.title": "Sirviente del Ori",
-  "advancements.rpg_classes.priest_mastery.description": "Obtén todos los hechizos de Sacerdote"
+  "advancements.rpg_series.obtain_healing_rune.title": "Camino de Sanación",
+  "advancements.rpg_series.obtain_healing_rune.description": "Obtén una Runa de Sanación",
+  "advancements.rpg_series.spell_master_paladin.title": "Tiempo del Juicio",
+  "advancements.rpg_series.spell_master_paladin.description": "Obtén todos los hechizos de Paladín",
+  "advancements.rpg_series.spell_master_priest.title": "Sirviente del Ori",
+  "advancements.rpg_series.spell_master_priest.description": "Obtén todos los hechizos de Sacerdote"
 }

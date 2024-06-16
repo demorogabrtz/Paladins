@@ -9,7 +9,7 @@
     "description": {
       "translate": "advancements.rpg_series.spell_master_paladin.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

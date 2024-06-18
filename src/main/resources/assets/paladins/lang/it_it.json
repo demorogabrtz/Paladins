@@ -19,6 +19,7 @@
   "item.paladins.diamond_claymore": "Claymore di diamante",
   "item.paladins.netherite_claymore": "Claymore di netherite",
   "item.paladins.aeternium_claymore": "Claymore di aeternium",
+  "item.paladins.ruby_claymore": "Claymore di rubino",  
 
   "item.paladins.wooden_great_hammer": "Martello da guerra di legno",
   "item.paladins.stone_great_hammer": "Martello da guerra di pietra",
@@ -27,12 +28,15 @@
   "item.paladins.diamond_great_hammer": "Martello da guerra di diamante",
   "item.paladins.netherite_great_hammer": "Martello da guerra di netherite",
   "item.paladins.aeternium_great_hammer": "Martello da guerra di aeternium",
+  "item.paladins.ruby_great_hammer": "Martello da guerra di rubino",  
 
   "item.paladins.stone_mace": "Mazza di pietra",
   "item.paladins.iron_mace": "Mazza di ferro",
   "item.paladins.golden_mace": "Mazza d'oro",
   "item.paladins.diamond_mace": "Mazza di diamante",
   "item.paladins.netherite_mace": "Mazza di netherite",
+  "item.paladins.aeternium_mace": "Mazza di aeternium",
+  "item.paladins.ruby_mace": "Mazza di rubino",  
 
   "item.paladins.priest_robe_head": "Collare da chierico",
   "item.paladins.priest_robe_chest": "Tunica da chierico",
@@ -88,10 +92,21 @@
   "block.paladins.monk_workbench": "Banco del monaco",
   "block.paladins.monk_workbench.hint": "Banco da lavoro per villici monaci.",  
 
-  "advancements.rpg_series.obtain_healing_rune.title": "Via del chierico",
-  "advancements.rpg_series.obtain_healing_rune.description": "Ottieni una runa curativa",
-  "advancements.rpg_series.spell_master_paladin.title": "Tempo del giudizio",
-  "advancements.rpg_series.spell_master_paladin.description": "Ottieni tutte le magie del paladino",
-  "advancements.rpg_series.spell_master_priest.title": "Servo degli Ori",
-  "advancements.rpg_series.spell_master_priest.description": "Ottieni tutte le magie da chierico"
+  "advancements.rpg_series.path_choose_paladin.title": "Via della giustizia",
+  "advancements.rpg_series.path_choose_paladin.description": "Crea un tomo della protezione",
+  "advancements.rpg_series.path_choose_priest.title": "Via della luce",
+  "advancements.rpg_series.path_choose_priest.description": "Crea un libro della vitalità",
+
+  "advancements.rpg_series.spell_novice_paladin.title": "Difensore ardente",
+  "advancements.rpg_series.spell_novice_paladin.description": "Ottieni il tuo primo incantesimo da paladino",
+  "advancements.rpg_series.spell_novice_priest.title": "Promessa di ascensione",
+  "advancements.rpg_series.spell_novice_priest.description": "Ottieni il tuo primo incantesimo da chierico",
+
+  "advancements.rpg_series.spell_master_paladin.title": "Ora del giudizio",
+  "advancements.rpg_series.spell_master_paladin.description": "Ottieni tutti gli incantesimi da paladino",
+  "advancements.rpg_series.spell_master_priest.title": "Servo dell'Ori",
+  "advancements.rpg_series.spell_master_priest.description": "Ottieni tutti gli incantesimi da chierico",
+
+  "advancements.rpg_series.obtain_healing_rune.title": "Via della cura",
+  "advancements.rpg_series.obtain_healing_rune.description": "Ottieni una runa curativa"
 }

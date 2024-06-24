@@ -1,3 +1,8 @@
+# 1.2.2
+
+- Update Crusader Armor texture
+- Update Italian translation, thanks to @Zano1999
+
 # 1.2.1
 
 - Update claymore textures

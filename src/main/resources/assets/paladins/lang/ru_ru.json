@@ -19,6 +19,7 @@
   "item.paladins.diamond_claymore": "Алмазный клеймор",
   "item.paladins.netherite_claymore": "Незеритовый клеймор",
   "item.paladins.aeternium_claymore": "Этериевый клеймор",
+  "item.paladins.ruby_claymore": "Рубиновый клеймор",
 
   "item.paladins.wooden_great_hammer": "Деревянный боевой молот",
   "item.paladins.stone_great_hammer": "Каменный боевой молот",
@@ -27,12 +28,15 @@
   "item.paladins.diamond_great_hammer": "Алмазный боевой молот",
   "item.paladins.netherite_great_hammer": "Незеритовый боевой молот",
   "item.paladins.aeternium_great_hammer": "Этериевый боевой молот",
+  "item.paladins.ruby_great_hammer": "Рубиновый боевой молот",
 
   "item.paladins.stone_mace": "Каменная булава",
   "item.paladins.iron_mace": "Железная булава",
   "item.paladins.golden_mace": "Золотая булава",
   "item.paladins.diamond_mace": "Алмазная булава",
   "item.paladins.netherite_mace": "Незеритовая булава",
+  "item.paladins.aeternium_mace": "Этериевая булава",
+  "item.paladins.ruby_mace": "Рубиновая булава",
 
   "item.paladins.priest_robe_head": "Воротник священника",
   "item.paladins.priest_robe_chest": "Одеяние священника",
@@ -45,6 +49,7 @@
 
   "item.paladins.acolyte_wand": "Жезл прислужника",
   "item.paladins.holy_wand": "Жезл света",
+  "item.paladins.diamond_holy_wand": "Алмазный жезл света",
   "item.paladins.netherite_holy_wand": "Незеритовый жезл света",
 
   "item.paladins.holy_staff": "Посох света",
@@ -81,5 +86,25 @@
   "advancements.rpg_series.spell_master_paladin.title": "Бей супастатов...",
   "advancements.rpg_series.spell_master_paladin.description": "Заполучите все умения паладина",
   "advancements.rpg_series.spell_master_priest.title": "Воистину воскрес!",
-  "advancements.rpg_series.spell_master_priest.description": "Заполучите все умения священника"
+  "advancements.rpg_series.spell_master_priest.description": "Заполучите все умения священника",
+  "advancements.rpg_series.path_choose_paladin.title": "Путь правосудия",
+  "advancements.rpg_series.path_choose_paladin.description": "Создайте манускрипт правосудия",
+  "advancements.rpg_series.path_choose_priest.title": "Путь света",
+  "advancements.rpg_series.path_choose_priest.description": "Создайте Библию",
+  "advancements.rpg_series.spell_novice_paladin.title": "Ярый защитник",
+  "advancements.rpg_series.spell_novice_paladin.description": "Получите свое первое заклинание паладина",
+  "advancements.rpg_series.spell_novice_priest.title": "Святое обещание",
+  "advancements.rpg_series.spell_novice_priest.description": "Получите свое первое заклинание священника",
+
+  "effect.paladins.divine_protection.description": "Защищает вас от урона",
+  "effect.paladins.judgement.description": "Препятствует движению и действиям",
+  "spell.paladins.battle_banner.name": "Боевое знамя",
+  "spell.paladins.battle_banner.description": "Увеличивает скорость атаки и сопротивление урону для вас и союзников поблизости, в пределах {cloud_radius} блоков, на {cloud_duration} секунд.",
+  "effect.paladins.battle_banner": "Боевое знамя",
+  "effect.paladins.battle_banner.description": "Увеличивает скорость атаки и сопротивление урону",
+  "effect.paladins.priest_absorption.description": "Поглощает часть получаемого урона",
+  "spell.paladins.barrier.name": "Барьер",
+  "spell.paladins.barrier.description": "Вызывает круговой барьер, защищающий вас и союзников от снарядов, магии или врагов, вошедших в зону действия.",
+  "entity.paladins.barrier": "Барьер",
+  "entity.paladins.battle_banner": "Боевое знамя"
 }

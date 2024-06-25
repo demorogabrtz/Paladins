@@ -1,3 +1,8 @@
+# 1.2.3
+
+ - Update armor attribute defaults
+ - Update Russian translation, thanks to Alexander317
+
 # 1.2.2
 
 - Update Crusader Armor texture

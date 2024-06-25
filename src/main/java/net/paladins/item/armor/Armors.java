@@ -64,13 +64,13 @@ public class Armors {
                             () -> { return Ingredient.ofItems(Items.GOLD_INGOT); }
                     ),
                     ItemConfig.ArmorSet.with(
-                            new ItemConfig.ArmorSet.Piece(2)
+                            new ItemConfig.ArmorSet.Piece(3)
+                                    .addAll(ItemConfig.Attribute.bonuses(List.of(SpellSchools.HEALING.id), 1)),
+                            new ItemConfig.ArmorSet.Piece(8)
                                     .addAll(ItemConfig.Attribute.bonuses(List.of(SpellSchools.HEALING.id), 1)),
                             new ItemConfig.ArmorSet.Piece(6)
                                     .addAll(ItemConfig.Attribute.bonuses(List.of(SpellSchools.HEALING.id), 1)),
-                            new ItemConfig.ArmorSet.Piece(5)
-                                    .addAll(ItemConfig.Attribute.bonuses(List.of(SpellSchools.HEALING.id), 1)),
-                            new ItemConfig.ArmorSet.Piece(2)
+                            new ItemConfig.ArmorSet.Piece(3)
                                     .addAll(ItemConfig.Attribute.bonuses(List.of(SpellSchools.HEALING.id), 1))
                     )
             )

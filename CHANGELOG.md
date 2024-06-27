@@ -1,3 +1,7 @@
+# 1.2.4
+
+- Add enchantment condition tags 
+
 # 1.2.3
 
  - Update armor attribute defaults

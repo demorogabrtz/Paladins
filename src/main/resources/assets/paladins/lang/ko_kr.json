@@ -1,5 +1,5 @@
 {
-  "itemGroup.paladins.general": "팔라딘 & 사제",
+  "itemGroup.paladins.general": "팔라딘 & 사제 (RPG 시리즈)",
 
   "item.paladins.paladin_spell_book": "팔라딘 성서",
   "item.paladins.priest_spell_book": "성경",
@@ -64,11 +64,11 @@
   "effect.paladins.divine_protection": "신성 보호",
   "effect.paladins.divine_protection.description": "공격을 막아줍니다.",
   "spell.paladins.judgement.name": "심판",
-  "spell.paladins.judgement.description": "{impact_range} 블록 내의 대상과 주변 적에게 최대 {damage}의 피해를 주고 {effect_duration}초 동안 기절시킵니다.",
+  "spell.paladins.judgement.description": "{impact_range}블록 내의 대상과 주변 적에게 최대 {damage}의 피해를 주고 {effect_duration}초 동안 기절시킵니다.",
   "effect.paladins.judgement": "기절",
   "effect.paladins.judgement.description": "이동 및 행동을 방지합니다.",
   "spell.paladins.battle_banner.name": "전투 깃발",
-  "spell.paladins.battle_banner.description": "{cloud_radius} 블록 내의 자신과 아군의 공격 속도와 밀치기 저항을 {cloud_duration}초 동안 증가시킵니다.",
+  "spell.paladins.battle_banner.description": "{cloud_radius}블록 내의 자신과 아군의 공격 속도와 밀치기 저항을 {cloud_duration}초 동안 증가시킵니다.",
   "effect.paladins.battle_banner": "전투 깃발",
   "effect.paladins.battle_banner.description": "공격 속도와 밀치기 저항을 증가시킵니다.",
 

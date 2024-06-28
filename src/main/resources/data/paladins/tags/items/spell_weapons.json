@@ -1,6 +1,6 @@
 {
   "values": [
-    "paladins:#staves",
-    "paladins:#wands"
+    "#paladins:staves",
+    "#paladins:wands"
   ]
 }

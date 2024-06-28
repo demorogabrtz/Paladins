@@ -1,3 +1,7 @@
+# 1.2.5
+
+- Fix some item tags
+
 # 1.2.4
 
 - Add enchantment condition tags 

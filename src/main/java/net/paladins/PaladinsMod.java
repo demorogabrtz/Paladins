@@ -13,6 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.paladins.block.PaladinBlocks;
 import net.paladins.config.Default;
+import net.paladins.config.ShieldsConfig;
 import net.paladins.config.TweaksConfig;
 import net.paladins.effect.Effects;
 import net.paladins.entity.BannerEntity;
@@ -36,6 +37,14 @@ public class PaladinsMod implements ModInitializer {
             .setDirectory(ID)
             .sanitize(true)
             .build();
+
+    public static ConfigManager<ShieldsConfig> shieldConfig = new ConfigManager<>
+            ("shields", new ShieldsConfig())
+            .builder()
+            .setDirectory(ID)
+            .sanitize(true)
+            .build();
+
     public static ConfigManager<StructurePoolConfig> villageConfig = new ConfigManager<>
             ("villages", Default.villageConfig)
             .builder()
@@ -52,6 +61,7 @@ public class PaladinsMod implements ModInitializer {
 
     public void onInitialize() {
         itemConfig.refresh();
+        shieldConfig.refresh();
         tweaksConfig.refresh();
         Group.PALADINS = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Armors.paladinArmorSet_t2.head))
@@ -61,9 +71,11 @@ public class PaladinsMod implements ModInitializer {
         PaladinBlocks.register();
         PaladinBooks.register();
         Weapons.register(itemConfig.value.weapons);
-        Shields.register();
+        Shields.register(shieldConfig.value.shields);
         Armors.register(itemConfig.value.armor_sets);
+        shieldConfig.save();
         itemConfig.save();
+
         villageConfig.refresh();
         Effects.register();
         PaladinVillagers.register();

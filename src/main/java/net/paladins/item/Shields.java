@@ -3,8 +3,10 @@ package net.paladins.item;
 import com.github.theredbrain.shieldapi.item.CustomShieldItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
@@ -12,50 +14,107 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.paladins.PaladinsMod;
+import net.paladins.config.ShieldsConfig;
+import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.weapon.Weapon;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class Shields {
-    public record Entry(CustomShieldItem item, Identifier id) {  }
+    public record Entry(Identifier id, Supplier<Ingredient> repair, List<ItemConfig.Attribute> attributes, int durability) {  }
     public static final ArrayList<Entry> ENTRIES = new ArrayList<>();
 
-    public static Entry shield(Identifier id) {
-        var entry = new Entry(new CustomShieldItem(
-                null,
-                () -> Ingredient.ofItems(Items.IRON_INGOT),
-                List.of(
-                        new Pair<>(
-                                EntityAttributes.GENERIC_ARMOR,
-                                new EntityAttributeModifier(
-                                        "test_shield_armor",
-                                        4.0,
-                                        EntityAttributeModifier.Operation.ADDITION
-                                )
-                        )
-                ),
-                new FabricItemSettings().maxDamage(150)), id);
+    private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
+        var id = new Identifier(idString);
+        if (requirement) {
+            return () -> {
+                return Ingredient.ofItems(fallback);
+            };
+        } else {
+            return () -> {
+                var item = Registries.ITEM.get(id);
+                var ingredient = item != null ? item : fallback;
+                return Ingredient.ofItems(ingredient);
+            };
+        }
+    }
+
+    public static Entry shield(String name, Supplier<Ingredient> repair, List<ItemConfig.Attribute> attributes, int durability) {
+        var entry = new Entry(new Identifier(PaladinsMod.ID, name), repair, attributes, durability);
         ENTRIES.add(entry);
         return entry;
     }
 
-    public static Entry iron_kite_shield = shield(new Identifier(PaladinsMod.ID, "iron_kite_shield"));
-    public static Entry golden_kite_shield = shield(new Identifier(PaladinsMod.ID, "golden_kite_shield"));
-    public static Entry diamond_kite_shield = shield(new Identifier(PaladinsMod.ID, "diamond_kite_shield"));
-    public static Entry netherite_kite_shield = shield(new Identifier(PaladinsMod.ID, "netherite_kite_shield"));
-    public static Entry aeternium_kite_shield = shield(new Identifier(PaladinsMod.ID, "aeternium_kite_shield"));
-    public static Entry ruby_kite_shield = shield(new Identifier(PaladinsMod.ID, "ruby_kite_shield"));
+    private static final String GENERIC_ARMOR_TOUGHNESS = "minecraft:generic.armor_toughness";
+    private static final String GENERIC_MAX_HEALTH = "generic.max_health";
 
-    public static void register() {
+    public static Entry iron_kite_shield = shield("iron_kite_shield",
+            () -> Ingredient.ofItems(Items.IRON_INGOT),
+            List.of(
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  2.0f,  EntityAttributeModifier.Operation.ADDITION)
+            ),
+            150);
+    public static Entry golden_kite_shield = shield("golden_kite_shield",
+            () -> Ingredient.ofItems(Items.GOLD_INGOT), List.of(
+            ),
+            32);
+    public static Entry diamond_kite_shield = shield("diamond_kite_shield",
+            () -> Ingredient.ofItems(Items.DIAMOND), List.of(
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  4.0f,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION)
+            ),
+            132);
+    public static Entry netherite_kite_shield = shield("netherite_kite_shield",
+            () -> Ingredient.ofItems(Items.NETHERITE_INGOT), List.of(
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION)
+            ),
+            2032);
+
+    private static final String BETTER_END = "betterend";
+    private static final String BETTER_NETHER = "betternether";
+
+    public static void register(Map<String, ShieldsConfig.Entry> configs) {
+        if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_NETHER)) {
+            var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
+            shield("ruby_kite_shield", repair, List.of(
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  8.0f,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  2,  EntityAttributeModifier.Operation.ADDITION)
+            ), 2032);
+        }
+
+        if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_END)) {
+            var repair = ingredient("betterend:aeternium_ingot", FabricLoader.getInstance().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
+            shield("aeternium_kite_shield", repair, List.of(
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  8.0f,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  2,  EntityAttributeModifier.Operation.ADDITION)
+            ), 2032);
+        }
+
+        ArrayList<Item> shields = new ArrayList<>();
         for (var entry: ENTRIES) {
-            Registry.register(Registries.ITEM, entry.id, entry.item);
+            var config = configs.get(entry.id.toString());
+            if (config == null) {
+                config = new ShieldsConfig.Entry();
+                config.durability = entry.durability;
+                config.attributes = entry.attributes;
+                configs.put(entry.id.toString(), config);
+            }
+            ArrayList<Pair<EntityAttribute, EntityAttributeModifier>> shieldAttributes = new ArrayList<>();
+            for (var attributeEntry: Weapon.attributesFrom(config.attributes).entrySet()) {
+                shieldAttributes.add(new Pair<>(attributeEntry.getKey(), attributeEntry.getValue()));
+            }
+            var shield = new CustomShieldItem(null, entry.repair, shieldAttributes, new FabricItemSettings().maxDamage(config.durability));
+            Registry.register(Registries.ITEM, entry.id, shield);
+            shields.add(shield);
         }
 
         ItemGroupEvents.modifyEntriesEvent(Group.KEY).register((content) -> {
-            for (var entry: ENTRIES) {
-                content.add(entry.item);
+            for (var shield: shields) {
+                content.add(shield);
             }
         });
     }

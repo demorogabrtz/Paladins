@@ -57,6 +57,13 @@
   "item.paladins.netherite_holy_staff": "Netherite Holy Staff",
   "item.paladins.ruby_holy_staff": "Ruby Holy Staff",
 
+  "item.paladins.iron_kite_shield": "Iron Kite Shield",
+  "item.paladins.golden_kite_shield": "Golden Kite Shield",
+  "item.paladins.diamond_kite_shield": "Diamond Kite Shield",
+  "item.paladins.netherite_kite_shield": "Netherite Kite Shield",
+  "item.paladins.aeternium_kite_shield": "Aeternium Kite Shield",
+  "item.paladins.ruby_kite_shield": "Ruby Kite Shield",
+
   "spell.paladins.flash_heal.name": "Flash Heal",
   "spell.paladins.flash_heal.description": "Heals you or a friendly target by {heal} health points.",
   "spell.paladins.divine_protection.name": "Divine Protection",

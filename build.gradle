@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     id "com.matthewprenger.cursegradle" version "1.4.0"
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
@@ -47,6 +47,8 @@ dependencies {
 //    modImplementation(files("run/mods/dev/spell_engine-${project.spell_engine_version}.jar"))
 //    modImplementation(files("run/mods/dev/spell_power-${project.spell_power_version}.jar"))
 //    modImplementation(files("run/mods/dev/runes-fabric-${project.runes_version}.jar"))
+
+    modImplementation(files("run/mods/dev/shield-api-${project.shield_api_version}.jar"))
 }
 
 processResources {

@@ -19,6 +19,7 @@ import net.paladins.entity.BannerEntity;
 import net.paladins.entity.BarrierEntity;
 import net.paladins.item.Group;
 import net.paladins.item.PaladinBooks;
+import net.paladins.item.Shields;
 import net.paladins.item.Weapons;
 import net.paladins.item.armor.Armors;
 import net.paladins.util.SoundHelper;
@@ -60,6 +61,7 @@ public class PaladinsMod implements ModInitializer {
         PaladinBlocks.register();
         PaladinBooks.register();
         Weapons.register(itemConfig.value.weapons);
+        Shields.register();
         Armors.register(itemConfig.value.armor_sets);
         itemConfig.save();
         villageConfig.refresh();

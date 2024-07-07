@@ -1,5 +1,5 @@
 {
-	"parent": "paladins:item/base/metal_kite_shield_template",
+	"parent": "paladins:item/base/metal_kite_shield_a_template",
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [-135, -45, -180],

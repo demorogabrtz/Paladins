@@ -46,6 +46,7 @@ public class Shields {
     public static Entry diamond_kite_shield = shield(new Identifier(PaladinsMod.ID, "diamond_kite_shield"));
     public static Entry netherite_kite_shield = shield(new Identifier(PaladinsMod.ID, "netherite_kite_shield"));
     public static Entry ruby_kite_shield = shield(new Identifier(PaladinsMod.ID, "ruby_kite_shield"));
+    public static Entry aeternium_kite_shield = shield(new Identifier(PaladinsMod.ID, "aeternium_kite_shield"));
 
     public static void register() {
         for (var entry: ENTRIES) {

@@ -1,3 +1,7 @@
+# 1.3.0
+
+- Add new material tiered shields, with custom visuals, configurable durability and attributes
+
 # 1.2.6
 
 - Fix some item tags

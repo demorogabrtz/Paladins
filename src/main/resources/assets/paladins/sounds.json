@@ -13,6 +13,13 @@
       "paladins:cloth_equip_3"
     ]
   },
+  "shield_equip": {
+    "sounds": [
+      "paladins:plate_equip_1",
+      "paladins:plate_equip_2",
+      "paladins:plate_equip_3"
+    ]
+  },
 
   "divine_protection_impact": {
     "sounds": [
@@ -96,4 +103,4 @@
       "paladins:holy_barrier_deactivate"
     ]
   }
-},
+}

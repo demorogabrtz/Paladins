@@ -1,5 +1,5 @@
 {
-  "parent": "paladins:item/model_great_hammer",
+  "parent": "paladins:item/base/great_hammer",
   "textures": {
     "1": "paladins:item/iron_great_hammer"
   }

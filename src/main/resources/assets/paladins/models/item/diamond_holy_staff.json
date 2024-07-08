@@ -1,5 +1,5 @@
 {
-  "parent": "paladins:item/medium_staff",
+  "parent": "paladins:item/base/staff_24",
   "textures": {
     "layer0": "paladins:item/diamond_holy_staff"
   }

@@ -1,5 +1,5 @@
 {
-  "parent": "paladins:item/model_mace",
+  "parent": "paladins:item/base/mace",
   "textures": {
     "1": "paladins:item/netherite_mace"
   }

@@ -1,5 +1,5 @@
 {
-  "parent": "paladins:item/model_claymore",
+  "parent": "paladins:item/base/claymore_28",
   "textures": {
     "layer0": "paladins:item/iron_claymore"
   }

@@ -64,6 +64,7 @@ public class Shields {
     public static Entry iron_kite_shield = shield("iron_kite_shield",
             () -> Ingredient.ofItems(Items.IRON_INGOT),
             List.of(
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION),
                     new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  2.0f,  EntityAttributeModifier.Operation.ADDITION)
             ),
             durability_t1);
@@ -73,14 +74,14 @@ public class Shields {
             durability_t0);
     public static Entry diamond_kite_shield = shield("diamond_kite_shield",
             () -> Ingredient.ofItems(Items.DIAMOND), List.of(
-                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  4.0f,  EntityAttributeModifier.Operation.ADDITION),
-                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION)
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  2.0f,  EntityAttributeModifier.Operation.ADDITION)
             ),
             durability_t2);
     public static Entry netherite_kite_shield = shield("netherite_kite_shield",
             () -> Ingredient.ofItems(Items.NETHERITE_INGOT), List.of(
-                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION),
-                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION)
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  4.0f,  EntityAttributeModifier.Operation.ADDITION)
             ),
             durability_t3);
 
@@ -91,16 +92,16 @@ public class Shields {
         if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_NETHER)) {
             var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
             shield("ruby_kite_shield", repair, List.of(
-                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  8.0f,  EntityAttributeModifier.Operation.ADDITION),
-                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  2,  EntityAttributeModifier.Operation.ADDITION)
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability_t4);
         }
 
         if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_END)) {
             var repair = ingredient("betterend:aeternium_ingot", FabricLoader.getInstance().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
             shield("aeternium_kite_shield", repair, List.of(
-                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  8.0f,  EntityAttributeModifier.Operation.ADDITION),
-                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  2,  EntityAttributeModifier.Operation.ADDITION)
+                    new ItemConfig.Attribute(GENERIC_ARMOR_TOUGHNESS,  1,  EntityAttributeModifier.Operation.ADDITION),
+                    new ItemConfig.Attribute(GENERIC_MAX_HEALTH,  6.0f,  EntityAttributeModifier.Operation.ADDITION)
             ), durability_t4);
         }
 

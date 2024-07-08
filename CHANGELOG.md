@@ -1,6 +1,7 @@
 # 1.3.0
 
 - Add new material tiered shields, with custom visuals, configurable durability and attributes
+- Update some weapon textures
 
 # 1.2.6
 

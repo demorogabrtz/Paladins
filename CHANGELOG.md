@@ -1,7 +1,13 @@
 # 1.3.0
 
-- Add new material tiered shields, with custom visuals, configurable durability and attributes
-- Update some weapon textures
+- Update several armor and weapon textures
+- Add new material tiered shields, providing attribute bonuses and high durability, custom visuals
+  - Iron Kite Shield
+  - Golden Kite Shield
+  - Diamond Kite Shield
+  - Netherite Kite Shield
+  - Aeternium Kite Shield
+  - Ruby Kite Shield
 
 # 1.2.6
 

@@ -6,8 +6,8 @@
   - Golden Kite Shield
   - Diamond Kite Shield
   - Netherite Kite Shield
-  - Aeternium Kite Shield
-  - Ruby Kite Shield
+  - Aeternium Kite Shield (BetterEnd exclusive)
+  - Ruby Kite Shield (BetterNether exclusive)
 
 # 1.2.6
 

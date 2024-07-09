@@ -48,7 +48,8 @@ dependencies {
 //    modImplementation(files("run/mods/dev/spell_power-${project.spell_power_version}.jar"))
 //    modImplementation(files("run/mods/dev/runes-fabric-${project.runes_version}.jar"))
 
-    modImplementation(files("run/mods/dev/shield-api-${project.shield_api_version}.jar"))
+    include(modImplementation("maven.modrinth:shield-api:${project.shield_api_version}"))
+//    modImplementation(files("run/mods/dev/shield-api-${project.shield_api_version}.jar"))
 }
 
 processResources {
@@ -116,8 +117,8 @@ if(project.hasProperty('release_type')) {
                 requiredDependency 'fabric-api'
                 requiredDependency 'azurelib-armor'
                 requiredDependency 'spell-engine'
-                requiredDependency 'spell-power'
                 requiredDependency 'rune-crafting'
+                requiredDependency 'shield-api'
             }
 
             mainArtifact(remapJar)
@@ -147,8 +148,8 @@ if(project.hasProperty('release_type')) {
             required.project 'fabric-api'
             required.project 'azurelib-armor'
             required.project 'spell-engine'
-            required.project 'spell-power'
             required.project 'runes'
+            required.project 'shield-api'
         }
     }
 

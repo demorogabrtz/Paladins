@@ -1,7 +1,5 @@
 package net.paladins.entity;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -190,6 +188,9 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
                         if (isProtected(livingEntity)) {
                             EntityImmunity.setImmune(livingEntity, EntityImmunity.Type.AREA_EFFECT, checkInterval + 1);
                             EntityImmunity.setImmune(livingEntity, EntityImmunity.Type.EXPLOSION, checkInterval + 1);
+                        } else {
+                            livingEntity.takeKnockback(PaladinsMod.tweaksConfig.value.barrier_knockback_strength,
+                                    this.getX() - livingEntity.getX(), this.getZ() - livingEntity.getZ());
                         }
                     }
                 }

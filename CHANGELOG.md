@@ -1,3 +1,10 @@
+# 1.3.1
+
+Update priest Barrier spell:
+- Increased range
+- Improved shader compatibility
+- Added continuous knockback against hostile entities
+
 # 1.3.0
 
 - Update several armor and weapon textures

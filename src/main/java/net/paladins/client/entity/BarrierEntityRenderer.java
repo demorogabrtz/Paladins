@@ -103,14 +103,14 @@ public class BarrierEntityRenderer<T extends BarrierEntity> extends EntityRender
         public static final Config IRIS = new Config(
                 CustomLayers.create(
                         SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE,
-                        ENTITY_TRANSLUCENT_EMISSIVE_PROGRAM,
-                        TRANSLUCENT_TRANSPARENCY,
+                        LIGHTNING_PROGRAM,
+                        LIGHTNING_TRANSPARENCY,
                         DISABLE_CULLING,
                         COLOR_MASK,
                         ENABLE_OVERLAY_COLOR,
                         MAIN_TARGET,
                         false),
-                shield.red(), shield.green(), shield.blue(), 0.2f, 0.6f, 0.8f);
+                shield.red(), shield.green(), shield.blue(), 0.5f, 1f, 0.8f);
     }
 
     public static void renderShield(BarrierEntity entity, MatrixStack matrices, VertexConsumer vertexConsumer, int light, float tickDelta, Config config) {

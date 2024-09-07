@@ -133,7 +133,7 @@ public class Armors {
     public static float priestRobeHaste = 0.05F;
     private static final float specializedRobeSpellPower = 0.25F;
     public static final Armor.Set priestArmorSet_t2 = create(
-            priest_robe,
+            prior_robe,
             Identifier.of(PaladinsMod.ID, "prior_robe"),
             20,
             PriestArmor::new,

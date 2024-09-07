@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "paladins:golden_great_hammer"
+      "id": "paladins:golden_great_hammer"
     },
     "title": {
       "translate": "advancements.rpg_series.spell_master_paladin.title"

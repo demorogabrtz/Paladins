@@ -7,7 +7,7 @@
     "item": "paladins:diamond_holy_staff"
   },
   "result": {
-    "item": "paladins:netherite_holy_staff"
+    "id": "paladins:netherite_holy_staff"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

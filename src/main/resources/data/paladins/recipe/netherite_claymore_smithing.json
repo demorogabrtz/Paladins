@@ -7,7 +7,7 @@
     "item": "paladins:diamond_claymore"
   },
   "result": {
-    "item": "paladins:netherite_claymore"
+    "id": "paladins:netherite_claymore"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

@@ -7,7 +7,7 @@
     "item": "paladins:diamond_kite_shield"
   },
   "result": {
-    "item": "paladins:netherite_kite_shield"
+    "id": "paladins:netherite_kite_shield"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

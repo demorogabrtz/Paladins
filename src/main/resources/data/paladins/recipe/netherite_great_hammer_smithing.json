@@ -7,7 +7,7 @@
     "item": "paladins:diamond_great_hammer"
   },
   "result": {
-    "item": "paladins:netherite_great_hammer"
+    "id": "paladins:netherite_great_hammer"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

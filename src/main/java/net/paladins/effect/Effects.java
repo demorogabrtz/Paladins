@@ -66,9 +66,15 @@ public class Effects {
         if (rangedHasteAttribute.isPresent()) {
             BATTLE_BANNER.effect.addAttributeModifier(rangedHasteAttribute.get(),
                     BATTLE_BANNER.modifierId(),
-                    PaladinsMod.tweaksConfig.value.battle_banner_ranged_haste_bonus,
+                    2,
                     EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
         }
+
+        ABSORPTION.effect.
+                addAttributeModifier(EntityAttributes.GENERIC_MAX_ABSORPTION,
+                        ABSORPTION.modifierId(),
+                        2,
+                        EntityAttributeModifier.Operation.ADD_VALUE);
 
         Synchronized.configure(DIVINE_PROTECTION.effect, true);
         Synchronized.configure(JUDGEMENT.effect, true);

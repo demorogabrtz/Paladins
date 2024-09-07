@@ -7,7 +7,7 @@
     "item": "paladins:diamond_mace"
   },
   "result": {
-    "item": "paladins:netherite_mace"
+    "id": "paladins:netherite_mace"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

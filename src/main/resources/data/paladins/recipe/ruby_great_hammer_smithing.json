@@ -15,7 +15,7 @@
     "item": "paladins:netherite_great_hammer"
   },
   "result": {
-    "item": "paladins:ruby_great_hammer"
+    "id": "paladins:ruby_great_hammer"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

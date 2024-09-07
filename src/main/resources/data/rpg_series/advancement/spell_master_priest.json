@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "paladins:holy_staff"
+      "id": "paladins:holy_staff"
     },
     "title": {
       "translate": "advancements.rpg_series.spell_master_priest.title"

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "paladins:iron_mace"
+      "id": "paladins:iron_mace"
     },
     "title": {
       "translate": "advancements.rpg_series.spell_novice_paladin.title"

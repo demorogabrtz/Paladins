@@ -37,7 +37,7 @@ public class BarrierEntityRenderer<T extends BarrierEntity> extends EntityRender
     public static void setup() {
         WorldRenderEvents.AFTER_TRANSLUCENT.register(context -> {
             VertexConsumerProvider.Immediate vcProvider = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
-//            renderAllInWorld(context.matrixStack(), vcProvider, context.camera(), LightmapTextureManager.MAX_LIGHT_COORDINATE, context.tickDelta());
+            renderAllInWorld(context.matrixStack(), vcProvider, context.camera(), LightmapTextureManager.MAX_LIGHT_COORDINATE, context.tickCounter().getTickDelta(true));
         });
     }
 
@@ -138,63 +138,64 @@ public class BarrierEntityRenderer<T extends BarrierEntity> extends EntityRender
         if (delta > 1) delta = 2-delta; // send in opposite direction if halfway
         delta = 1 - Math.pow(1 - delta, 4); // ease out interpolation
 
-//        for (int m = 0; m < 2; m++) { // 2 outer loops, 1 for the top half and 1 for the bottom half
-//            for (int i = 0; i < 6; i++) { // 6 inner loops, 1 for each segment(since it's a hexagon)
-//                matrices.push();
-//                if (m == 0) matrices.multiply(RotationAxis.POSITIVE_X.rotation((float) Math.PI)); // flip 180 degrees if doing the bottom half
-//                matrices.translate(offset, 0, 0);
-//                matrices.multiply(RotationAxis.POSITIVE_Y.rotation((float) (i/3f*Math.PI)), -offset, 0, 0); // rotate around middle to position segment
-//                matrices.multiply(RotationAxis.POSITIVE_Z.rotation(zSlant)); // applying z slant
-//
-//                float r = config.red();
-//                float g = config.green();
-//                float b = config.blue();
-//                float alpha = config.alpha();
-//
-//                if (entity.age >= entity.getTimeToLive() - entity.expirationDuration()) {
-//                    int relAge = entity.getTimeToLive() - entity.expirationDuration() - entity.age;
-//                    alpha = config.expirationPulseAlpha * Math.abs(MathHelper.cos((float) ((relAge*1.25f)/10f * Math.PI))); // simple calculation to flash in and out - the PI and 1.25 multiplications are to make it start at full alpha and end at none
-//                } else  if (time % 12 == LIGHT_UP_ORDER[i+(m*6)]) {
-//                    //g+=(float) (0.1f*delta);
-//                    var glow = (float) (0.5f*delta);
-//                    r = blend(r, 1f, glow);
-//                    g = blend(g, 1f, glow);
-//                    b = blend(b, 1f, glow);
-//                    alpha = blend(alpha, config.panelFlashAlpha(), glow);
-//                }
-//
-//                Matrix4f matrix = new Matrix4f(matrices.peek().getPositionMatrix()); // copying matrix to avoid issue with sodium's matrix optimizations
-//                Matrix3f normalMatrix = matrices.peek().getNormalMatrix();
-//                vertexConsumer.vertex(matrix, 0, radius, -size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next(); // main part
-//                vertexConsumer.vertex(matrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next(); // flip side, so that it renders from both the inside and outside
-//                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, 0, -size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, radius, -size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//
-//                matrices.pop();
-//                matrices.push(); // finding the position of the next quad, so that we can grab its vertex for a triangle
-//                Matrix4f newMatrix = matrices.peek().getPositionMatrix();
-//                if (m == 0) matrices.multiply(RotationAxis.POSITIVE_X.rotation((float) Math.PI));
-//                matrices.translate(offset, 0, 0);
-//                matrices.multiply(RotationAxis.POSITIVE_Y.rotation((float) ((i-1)/3f*Math.PI)), -offset, 0, 0);
-//                matrices.multiply(RotationAxis.POSITIVE_Z.rotation(zSlant));
-//
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next(); // rendering main part of the connector triangle
-//                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(newMatrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next(); // flip side, so that it renders from both the inside and outside
-//                vertexConsumer.vertex(newMatrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(normalMatrix, 0, 0, 0).next();
-//                matrices.pop();
-//            }
-//        }
+        for (int m = 0; m < 2; m++) { // 2 outer loops, 1 for the top half and 1 for the bottom half
+            for (int i = 0; i < 6; i++) { // 6 inner loops, 1 for each segment(since it's a hexagon)
+                matrices.push();
+                if (m == 0) matrices.multiply(RotationAxis.POSITIVE_X.rotation((float) Math.PI)); // flip 180 degrees if doing the bottom half
+                matrices.translate(offset, 0, 0);
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotation((float) (i/3f*Math.PI)), -offset, 0, 0); // rotate around middle to position segment
+                matrices.multiply(RotationAxis.POSITIVE_Z.rotation(zSlant)); // applying z slant
+
+                float r = config.red();
+                float g = config.green();
+                float b = config.blue();
+                float alpha = config.alpha();
+
+                if (entity.age >= entity.getTimeToLive() - entity.expirationDuration()) {
+                    int relAge = entity.getTimeToLive() - entity.expirationDuration() - entity.age;
+                    alpha = config.expirationPulseAlpha * Math.abs(MathHelper.cos((float) ((relAge*1.25f)/10f * Math.PI))); // simple calculation to flash in and out - the PI and 1.25 multiplications are to make it start at full alpha and end at none
+                } else  if (time % 12 == LIGHT_UP_ORDER[i+(m*6)]) {
+                    //g+=(float) (0.1f*delta);
+                    var glow = (float) (0.5f*delta);
+                    r = blend(r, 1f, glow);
+                    g = blend(g, 1f, glow);
+                    b = blend(b, 1f, glow);
+                    alpha = blend(alpha, config.panelFlashAlpha(), glow);
+                }
+
+                Matrix4f matrix = new Matrix4f(matrices.peek().getPositionMatrix()); // copying matrix to avoid issue with sodium's matrix optimizations
+                var matrixEntry = matrices.peek();
+                // Matrix3f normalMatrix = matrixEntry.getNormalMatrix();
+                vertexConsumer.vertex(matrix, 0, radius, -size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0); // main part
+                vertexConsumer.vertex(matrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0); // flip side, so that it renders from both the inside and outside
+                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, 0, -size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, radius, -size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+
+                matrices.pop();
+                matrices.push(); // finding the position of the next quad, so that we can grab its vertex for a triangle
+                Matrix4f newMatrix = matrices.peek().getPositionMatrix();
+                if (m == 0) matrices.multiply(RotationAxis.POSITIVE_X.rotation((float) Math.PI));
+                matrices.translate(offset, 0, 0);
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotation((float) ((i-1)/3f*Math.PI)), -offset, 0, 0);
+                matrices.multiply(RotationAxis.POSITIVE_Z.rotation(zSlant));
+
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0); // rendering main part of the connector triangle
+                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(newMatrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u2, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0); // flip side, so that it renders from both the inside and outside
+                vertexConsumer.vertex(newMatrix, 0, 0, -size).color(r, g, b, alpha).texture(u1, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, 0, size).color(r, g, b, alpha).texture(u2, v1).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                vertexConsumer.vertex(matrix, 0, radius, size).color(r, g, b, 0f).texture(u1, v2).overlay(overlayUV).light(light).normal(matrixEntry, 0, 0, 0);
+                matrices.pop();
+            }
+        }
     }
 
     public static float blend(float min, float max, float delta) {

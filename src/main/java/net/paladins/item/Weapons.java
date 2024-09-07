@@ -23,12 +23,8 @@ import java.util.function.Supplier;
 public class Weapons {
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
 
-    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Item item, ItemConfig.Weapon defaults) {
-        return entry(null, name, material, item, defaults);
-    }
-
-    private static Weapon.Entry entry(String requiredMod, String name, Weapon.CustomMaterial material, Item item, ItemConfig.Weapon defaults) {
-        var entry = new Weapon.Entry(PaladinsMod.ID, name, material, item, defaults, null);
+    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, ItemConfig.Weapon defaults) {
+        var entry = new Weapon.Entry(PaladinsMod.ID, name, material, factory, defaults, null);
         if (entry.isRequiredModInstalled()) {
             entries.add(entry);
         }
@@ -36,7 +32,7 @@ public class Weapons {
     }
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = new Identifier(idString);
+        var id = Identifier.of(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);
@@ -58,13 +54,7 @@ public class Weapons {
     private static final float claymoreHealing = 0;
 
     private static Weapon.Entry claymore(String name, Weapon.CustomMaterial material, float damage) {
-        return claymore(null, name, material, damage);
-    }
-
-    private static Weapon.Entry claymore(String requiredMod, String name, Weapon.CustomMaterial material, float damage) {
-        var settings = new Item.Settings();
-        var item = new SpellSwordItem(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, -3F));
+        return entry(name, material, SpellSwordItem::new, new ItemConfig.Weapon(damage, -3F));
     }
 
     public static final Weapon.Entry stone_claymore = claymore("stone_claymore",
@@ -83,13 +73,7 @@ public class Weapons {
     private static final float hammerHealing = 0;
 
     private static Weapon.Entry hammer(String name, Weapon.CustomMaterial material, float damage) {
-        return hammer(null, name, material, damage);
-    }
-
-    private static Weapon.Entry hammer(String requiredMod, String name, Weapon.CustomMaterial material, float damage) {
-        var settings = new Item.Settings();
-        var item = new SpellWeaponItem(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, -3.2F));
+        return entry(name, material, SpellWeaponItem::new, new ItemConfig.Weapon(damage, -3.2F));
     }
 
     public static final Weapon.Entry wooden_great_hammer = hammer("wooden_great_hammer",
@@ -111,18 +95,9 @@ public class Weapons {
     private static final float maceHealing = 0;
 
     private static Weapon.Entry mace(String name, Weapon.CustomMaterial material, float damage) {
-        return mace(null, name, material, damage);
+        return entry(name, material, SpellWeaponItem::new, new ItemConfig.Weapon(damage, -2.8F));
     }
 
-    private static Weapon.Entry mace(String requiredMod, String name, Weapon.CustomMaterial material, float damage) {
-        var settings = new Item.Settings();
-        var item = new SpellWeaponItem(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(damage, -2.8F));
-    }
-
-//    public static final Weapon.Entry stone_mace = mace("stone_mace",
-//            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.ofItems(Items.COBBLESTONE)), 5F)
-//            .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 2));
     public static final Weapon.Entry iron_mace = mace("iron_mace",
             Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 7F);
     public static final Weapon.Entry golden_mace = mace("golden_mace",
@@ -137,9 +112,7 @@ public class Weapons {
     private static final float wandAttackDamage = 2;
     private static final float wandAttackSpeed = -2.4F;
     private static Weapon.Entry wand(String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        var item = new StaffItem(material, settings);
-        return entry(name, material, item, new ItemConfig.Weapon(wandAttackDamage, wandAttackSpeed));
+        return entry(name, material, StaffItem::new, new ItemConfig.Weapon(wandAttackDamage, wandAttackSpeed));
     }
 
     public static final Weapon.Entry acolyte_wand = wand("acolyte_wand",
@@ -161,13 +134,7 @@ public class Weapons {
     private static final float staffAttackSpeed = -3F;
 
     private static Weapon.Entry staff(String name, Weapon.CustomMaterial material) {
-        return staff(null, name, material);
-    }
-
-    private static Weapon.Entry staff(String requiredMod, String name, Weapon.CustomMaterial material) {
-        var settings = new Item.Settings();
-        var item = new StaffItem(material, settings);
-        return entry(requiredMod, name, material, item, new ItemConfig.Weapon(staffAttackDamage, staffAttackSpeed));
+        return entry(name, material, StaffItem::new, new ItemConfig.Weapon(staffAttackDamage, staffAttackSpeed));
     }
 
     public static final Weapon.Entry holy_staff = staff("holy_staff",
@@ -185,7 +152,7 @@ public class Weapons {
     public static void register(Map<String, ItemConfig.Weapon> configs) {
         if (PaladinsMod.tweaksConfig.value.ignore_items_required_mods || FabricLoader.getInstance().isModLoaded(BETTER_NETHER)) {
             var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
-            staff("betternether", "ruby_holy_staff",
+            staff("ruby_holy_staff",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.HEALING.id, 6));
 

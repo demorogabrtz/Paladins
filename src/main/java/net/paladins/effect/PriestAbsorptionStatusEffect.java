@@ -16,17 +16,30 @@ public class PriestAbsorptionStatusEffect extends StatusEffect {
         this.healthPerStack = healthPerStack;
     }
 
-    @Override
-    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        entity.setAbsorptionAmount(entity.getAbsorptionAmount() - (float)(healthPerStack * (amplifier + 1)));
-        super.onRemoved(entity, attributes, amplifier);
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
+        return entity.getAbsorptionAmount() > 0.0F || entity.getWorld().isClient;
     }
 
-    @Override
-    public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        entity.setAbsorptionAmount(entity.getAbsorptionAmount() + (float)(healthPerStack * (amplifier + 1)));
-        super.onApplied(entity, attributes, amplifier);
+    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+        return true;
     }
+
+    public void onApplied(LivingEntity entity, int amplifier) {
+        super.onApplied(entity, amplifier);
+        entity.setAbsorptionAmount(Math.max(entity.getAbsorptionAmount(), (float)(healthPerStack * (1 + amplifier))));
+    }
+
+//    @Override
+//    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+//        entity.setAbsorptionAmount(entity.getAbsorptionAmount() - (float)(healthPerStack * (amplifier + 1)));
+//        super.onRemoved(entity, attributes, amplifier);
+//    }
+
+//    @Override
+//    public void onApplied(AttributeContainer attributeContainer, int amplifier) {
+//        entity.setAbsorptionAmount(entity.getAbsorptionAmount() + (float)(healthPerStack * (amplifier + 1)));
+//        super.onApplied(entity, attributes, amplifier);
+//    }
 }
 
 

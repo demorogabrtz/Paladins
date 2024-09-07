@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'fabric-loom' version '1.7-SNAPSHOT'
     id "com.matthewprenger.cursegradle" version "1.4.0"
     id "com.github.breadmoirai.github-release" version "2.4.1"
     id "com.modrinth.minotaur" version "2.+"
@@ -10,6 +10,8 @@ group = project.maven_group
 
 repositories {
     maven { url 'https://jitpack.io' }
+    maven { url 'https://maven.kosmx.dev/' }
+    maven { url 'https://maven.shedaniel.me/' }
     maven { url 'https://libs.azuredoom.com:4443/mods' }
     maven { url 'https://maven.terraformersmc.com/' }
     maven {
@@ -41,15 +43,18 @@ dependencies {
     modImplementation("dev.emi:trinkets:${project.trinkets_version}")
     modImplementation("mod.azure.azurelibarmor:azurelibarmor-fabric-${project.azure_mc_version}:${project.azure_lib_version}")
 
-    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
+//    modImplementation("maven.modrinth:spell-engine:${project.spell_engine_version}")
     modImplementation("maven.modrinth:spell-power:${project.spell_power_version}")
     modImplementation("maven.modrinth:runes:${project.runes_version}-fabric")
-//    modImplementation(files("run/mods/dev/spell_engine-${project.spell_engine_version}.jar"))
+    modImplementation(files("run/mods/dev/spell_engine-${project.spell_engine_version}.jar"))
 //    modImplementation(files("run/mods/dev/spell_power-${project.spell_power_version}.jar"))
 //    modImplementation(files("run/mods/dev/runes-fabric-${project.runes_version}.jar"))
 
     include(modImplementation("maven.modrinth:shield-api:${project.shield_api_version}"))
 //    modImplementation(files("run/mods/dev/shield-api-${project.shield_api_version}.jar"))
+
+    modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${project.player_anim_version}")
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}")
 }
 
 processResources {
@@ -61,7 +66,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly
@@ -93,6 +98,15 @@ jar {
 
 ext.changelog_last_section = { ->
     return new File("CHANGELOG.md").text.split('\n# ')[0]
+}
+
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
 }
 
 if(project.hasProperty('release_type')) {

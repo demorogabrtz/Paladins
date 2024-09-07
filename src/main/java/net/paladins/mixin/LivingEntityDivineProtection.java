@@ -43,16 +43,16 @@ public class LivingEntityDivineProtection {
                 || entity.getWorld().isClient()) {
             return;
         }
-        if (entity.hasStatusEffect(Effects.DIVINE_PROTECTION)) {
+        if (entity.hasStatusEffect(Effects.DIVINE_PROTECTION.registryEntry)) {
             cir.cancel();
-            var instance = entity.getStatusEffect(Effects.DIVINE_PROTECTION);
+            var instance = entity.getStatusEffect(Effects.DIVINE_PROTECTION.registryEntry);
             if (instance != null) {
                 // Remove current instance
-                entity.removeStatusEffect(Effects.DIVINE_PROTECTION);
+                entity.removeStatusEffect(Effects.DIVINE_PROTECTION.registryEntry);
                 if (instance.getAmplifier() > 0) {
                     // Add a new instance with a lower amplifier
                     entity.addStatusEffect(
-                            new StatusEffectInstance(Effects.DIVINE_PROTECTION,
+                            new StatusEffectInstance(Effects.DIVINE_PROTECTION.registryEntry,
                                     instance.getDuration(),
                                     instance.getAmplifier() - 1,
                                     instance.isAmbient(),

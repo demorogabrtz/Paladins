@@ -6,6 +6,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.paladins.PaladinsMod;
 import net.spell_engine.api.effect.ActionImpairing;
@@ -13,46 +14,69 @@ import net.spell_engine.api.effect.EntityActionsAllowed;
 import net.spell_engine.api.effect.Synchronized;
 import net.spell_power.api.SpellPowerMechanics;
 
+import java.util.ArrayList;
+
 public class Effects {
-    public static StatusEffect DIVINE_PROTECTION = new DivineProtectionStatusEffect(StatusEffectCategory.BENEFICIAL, 0x66ccff);
-    public static StatusEffect BATTLE_BANNER = new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0x66ccff);
-    public static StatusEffect JUDGEMENT = new JudgementStatusEffect(StatusEffectCategory.HARMFUL, 0xffffcc);
-    public static StatusEffect ABSORPTION = new PriestAbsorptionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc);
+    private static ArrayList<Entry> entries = new ArrayList<>();
+    public static class Entry {
+        public final Identifier id;
+        public final StatusEffect effect;
+        public RegistryEntry<StatusEffect> registryEntry;
 
-    public static String BATTLE_BANNER_BOOST_UUID = "052f3166-8a43-11ed-a1eb-0242ac120002";
-
-    public static void register() {
-        BATTLE_BANNER
-                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,
-                        BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.tweaksConfig.value.battle_banner_attack_speed_bonus,
-                        EntityAttributeModifier.Operation.MULTIPLY_BASE)
-                .addAttributeModifier(SpellPowerMechanics.HASTE.attribute,
-                        BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.tweaksConfig.value.battle_banner_spell_haste_bonus,
-                        EntityAttributeModifier.Operation.MULTIPLY_BASE)
-                .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
-                        BATTLE_BANNER_BOOST_UUID,
-                        PaladinsMod.tweaksConfig.value.battle_banner_knockback_resistance_bonus,
-                        EntityAttributeModifier.Operation.MULTIPLY_BASE)
-        ;
-        var rangedHasteAttribute = Registries.ATTRIBUTE.get(new Identifier("ranged_weapon", "haste"));
-        if (rangedHasteAttribute != null) {
-            BATTLE_BANNER.addAttributeModifier(rangedHasteAttribute,
-                    BATTLE_BANNER_BOOST_UUID,
-                    PaladinsMod.tweaksConfig.value.battle_banner_ranged_haste_bonus,
-                    EntityAttributeModifier.Operation.MULTIPLY_BASE);
+        public Entry(String name, StatusEffect effect) {
+            this.id = Identifier.of(PaladinsMod.ID, name);
+            this.effect = effect;
+            entries.add(this);
         }
 
-        Synchronized.configure(DIVINE_PROTECTION, true);
-        Synchronized.configure(JUDGEMENT, true);
-        Synchronized.configure(ABSORPTION, true);
-        ActionImpairing.configure(JUDGEMENT, EntityActionsAllowed.STUN);
+        public void register() {
+            registryEntry = Registry.registerReference(Registries.STATUS_EFFECT, id, effect);
+        }
 
-        int rawId = 710;
-        Registry.register(Registries.STATUS_EFFECT, rawId++, new Identifier(PaladinsMod.ID, "divine_protection").toString(), DIVINE_PROTECTION);
-        Registry.register(Registries.STATUS_EFFECT, rawId++, new Identifier(PaladinsMod.ID, "battle_banner").toString(), BATTLE_BANNER);
-        Registry.register(Registries.STATUS_EFFECT, rawId++, new Identifier(PaladinsMod.ID, "judgement").toString(), JUDGEMENT);
-        Registry.register(Registries.STATUS_EFFECT, rawId++, new Identifier(PaladinsMod.ID, "priest_absorption").toString(), ABSORPTION);
+        public Identifier modifierId() {
+            return Identifier.of(PaladinsMod.ID, "effect." + id.getPath());
+        }
+    }
+
+    public static final Entry DIVINE_PROTECTION = new Entry("divine_protection",
+            new DivineProtectionStatusEffect(StatusEffectCategory.BENEFICIAL, 0x66ccff));
+    public static final Entry BATTLE_BANNER = new Entry("battle_banner",
+            new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0x66ccff));
+    public static final Entry JUDGEMENT = new Entry("judgement",
+            new JudgementStatusEffect(StatusEffectCategory.HARMFUL, 0xffffcc));
+    public static final Entry ABSORPTION = new Entry("priest_absorption",
+            new PriestAbsorptionStatusEffect(StatusEffectCategory.BENEFICIAL, 0xffffcc));
+
+    public static void register() {
+        BATTLE_BANNER.effect
+                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,
+                        BATTLE_BANNER.modifierId(),
+                        PaladinsMod.tweaksConfig.value.battle_banner_attack_speed_bonus,
+                        EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+                .addAttributeModifier(SpellPowerMechanics.HASTE.attributeEntry,
+                        BATTLE_BANNER.modifierId(),
+                        PaladinsMod.tweaksConfig.value.battle_banner_spell_haste_bonus,
+                        EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+                .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
+                        BATTLE_BANNER.modifierId(),
+                        PaladinsMod.tweaksConfig.value.battle_banner_knockback_resistance_bonus,
+                        EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+        ;
+        var rangedHasteAttribute = Registries.ATTRIBUTE.getEntry(Identifier.of("ranged_weapon", "haste"));
+        if (rangedHasteAttribute.isPresent()) {
+            BATTLE_BANNER.effect.addAttributeModifier(rangedHasteAttribute.get(),
+                    BATTLE_BANNER.modifierId(),
+                    PaladinsMod.tweaksConfig.value.battle_banner_ranged_haste_bonus,
+                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+        }
+
+        Synchronized.configure(DIVINE_PROTECTION.effect, true);
+        Synchronized.configure(JUDGEMENT.effect, true);
+        Synchronized.configure(ABSORPTION.effect, true);
+        ActionImpairing.configure(JUDGEMENT.effect, EntityActionsAllowed.STUN);
+
+        for (var entry: entries) {
+            entry.register();
+        }
     }
 }

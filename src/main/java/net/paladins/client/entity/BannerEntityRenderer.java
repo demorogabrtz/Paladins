@@ -27,8 +27,8 @@ public class BannerEntityRenderer<T extends BannerEntity> extends EntityRenderer
         return null;
     }
 
-    public static final Identifier modelId = new Identifier(PaladinsMod.ID, "effect/battle_banner");
-    private static final Identifier beamTexture = new Identifier("textures/entity/beacon_beam.png");
+    public static final Identifier modelId = Identifier.of(PaladinsMod.ID, "effect/battle_banner");
+    private static final Identifier beamTexture = Identifier.of("textures/entity/beacon_beam.png");
     private static final RenderLayer layer =
             RenderLayer.getEntityTranslucent(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
 

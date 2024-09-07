@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SoundHelper {
-    public static final SoundEvent divineProtectionImpact = SoundEvent.of(new Identifier(PaladinsMod.ID, "divine_protection_impact"));
+    public static final SoundEvent divineProtectionImpact = SoundEvent.of(Identifier.of(PaladinsMod.ID, "divine_protection_impact"));
 
     public static List<String> soundKeys = List.of(
             "divine_protection_release",
@@ -41,22 +42,29 @@ public class SoundHelper {
 
     public static void registerSounds() {
         for (var soundKey: soundKeys) {
-            var soundId = new Identifier(PaladinsMod.ID, soundKey);
+            var soundId = Identifier.of(PaladinsMod.ID, soundKey);
             var customTravelDistance = soundDistances.get(soundKey);
             var soundEvent = (customTravelDistance == null)
                     ? SoundEvent.of(soundId)
                     : SoundEvent.of(soundId, customTravelDistance);
             Registry.register(Registries.SOUND_EVENT, soundId, soundEvent);
         }
-
-        Registry.register(Registries.SOUND_EVENT, PaladinArmor.equipSoundId, PaladinArmor.equipSound);
-        Registry.register(Registries.SOUND_EVENT, PriestArmor.equipSoundId, PriestArmor.equipSound);
-        Registry.register(Registries.SOUND_EVENT, Shields.equipSoundId, Shields.equipSound);
-        Registry.register(Registries.SOUND_EVENT, BarrierEntity.activateSoundId, BarrierEntity.activateSound);
-        Registry.register(Registries.SOUND_EVENT, BarrierEntity.idleSoundId, BarrierEntity.idleSound);
-        Registry.register(Registries.SOUND_EVENT, BarrierEntity.impactSoundId, BarrierEntity.impactSound);
-        Registry.register(Registries.SOUND_EVENT, BarrierEntity.deactivateSoundId, BarrierEntity.deactivateSound);
     }
+
+    public record Entry(Identifier id, SoundEvent sound, RegistryEntry<SoundEvent> entry) {}
+    private static Entry registerSound(String key) {
+        var soundId = Identifier.of(PaladinsMod.ID, key);
+        var event = SoundEvent.of(soundId);
+        var entry = Registry.registerReference(Registries.SOUND_EVENT, soundId, event);
+        return new Entry(soundId, event, entry);
+    }
+    public static final Entry paladin_armor_equip = registerSound("plate_equip");
+    public static final Entry priest_robe_equip = registerSound("cloth_equip");
+    public static final Entry shield_equip = registerSound("shield_equip");
+    public static final Entry holy_barrier_activate = registerSound("holy_barrier_activate");
+    public static final Entry holy_barrier_idle = registerSound("holy_barrier_idle");
+    public static final Entry holy_barrier_impact = registerSound("holy_barrier_impact");
+    public static final Entry holy_barrier_deactivate = registerSound("holy_barrier_deactivate");
 
     public static void playSoundEvent(World world, Entity entity, SoundEvent soundEvent) {
         playSoundEvent(world, entity, soundEvent, 1, 1);

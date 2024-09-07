@@ -1,3 +1,7 @@
+# 1.4.0
+
+- Update to Minecraft 1.21.1
+
 # 1.3.1
 
 Update priest Barrier spell:
@@ -16,7 +20,7 @@ Update priest Barrier spell:
   - Aeternium Kite Shield (BetterEnd exclusive)
   - Ruby Kite Shield (BetterNether exclusive)
 
-# 1.2.6
+# 1.2.6R
 
 - Fix some item tags
 

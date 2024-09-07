@@ -11,6 +11,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.paladins.PaladinsMod;
+import net.paladins.util.SoundHelper;
 import net.spell_engine.api.effect.EntityImmunity;
 import net.spell_engine.api.entity.SpellSpawnedEntity;
 import net.spell_engine.api.entity.TwoWayCollisionChecker;
@@ -22,15 +23,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class BarrierEntity extends Entity implements SpellSpawnedEntity {
     public static EntityType<BarrierEntity> TYPE;
-    public static final Identifier activateSoundId = new Identifier(PaladinsMod.ID, "holy_barrier_activate");
-    public static final SoundEvent activateSound = SoundEvent.of(activateSoundId);
-    public static final Identifier idleSoundId = new Identifier(PaladinsMod.ID, "holy_barrier_idle");
-    public static final SoundEvent idleSound = SoundEvent.of(idleSoundId);
-    public static final Identifier impactSoundId = new Identifier(PaladinsMod.ID, "holy_barrier_impact");
-    public static final SoundEvent impactSound = SoundEvent.of(impactSoundId);
-    public static final Identifier deactivateSoundId = new Identifier(PaladinsMod.ID, "holy_barrier_deactivate");
-    public static final SoundEvent deactivateSound = SoundEvent.of(deactivateSoundId);
-
 
     private Identifier spellId;
     private int ownerId;
@@ -87,7 +79,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        this.getWorld().playSoundFromEntity(null, this, impactSound, SoundCategory.PLAYERS, 1F, 1F);
+        this.getWorld().playSoundFromEntity(null, this, SoundHelper.holy_barrier_impact.sound(), SoundCategory.PLAYERS, 1F, 1F);
         return super.damage(source, amount);
     }
 
@@ -107,10 +99,10 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
     private static final TrackedData<Integer> OWNER_ID_TRACKER  = DataTracker.registerData(BarrierEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> TIME_TO_LIVE_TRACKER  = DataTracker.registerData(BarrierEntity.class, TrackedDataHandlerRegistry.INTEGER);
     @Override
-    protected void initDataTracker() {
-        this.getDataTracker().startTracking(SPELL_ID_TRACKER, "");
-        this.getDataTracker().startTracking(OWNER_ID_TRACKER, 0);
-        this.getDataTracker().startTracking(TIME_TO_LIVE_TRACKER, 0);
+    protected void initDataTracker(DataTracker.Builder builder) {
+        builder.add(SPELL_ID_TRACKER, "");
+        builder.add(OWNER_ID_TRACKER, 0);
+        builder.add(TIME_TO_LIVE_TRACKER, 0);
     }
 
     @Override
@@ -118,7 +110,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
         super.onTrackedDataSet(data);
         var rawSpellId = this.getDataTracker().get(SPELL_ID_TRACKER);
         if (rawSpellId != null && !rawSpellId.isEmpty()) {
-            this.spellId = new Identifier(rawSpellId);
+            this.spellId = Identifier.of(rawSpellId);
         }
         this.timeToLive = this.getDataTracker().get(TIME_TO_LIVE_TRACKER);
         this.calculateDimensions();
@@ -139,7 +131,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
-        this.spellId = new Identifier(nbt.getString(NBTKey.SPELL_ID.key));
+        this.spellId = Identifier.of(nbt.getString(NBTKey.SPELL_ID.key));
         this.ownerId = nbt.getInt(NBTKey.OWNER_ID.key);
         this.timeToLive = nbt.getInt(NBTKey.TIME_TO_LIVE.key);
 
@@ -161,7 +153,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
 
     private boolean idleSoundFired = false;
     private static final int checkInterval = 4;
-
+    
     @Override
     public void tick() {
         super.tick();
@@ -173,7 +165,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
         if (world.isClient()) {
             // Client
             if (!idleSoundFired) {
-                ((SoundPlayerWorld)world).playSoundFromEntity(this, idleSound, SoundCategory.PLAYERS, 1F, 1F);
+                ((SoundPlayerWorld)world).playSoundFromEntity(this, SoundHelper.holy_barrier_idle.sound(), SoundCategory.PLAYERS, 1F, 1F);
                 idleSoundFired = true;
             }
         } else {
@@ -196,7 +188,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
                 }
             }
             if (this.age == (this.timeToLive - expirationDuration())) {
-                this.getWorld().playSoundFromEntity(null, this, deactivateSound, SoundCategory.PLAYERS, 1F, 1F);
+                this.getWorld().playSoundFromEntity(null, this, SoundHelper.holy_barrier_deactivate.sound(), SoundCategory.PLAYERS, 1F, 1F);
             }
         }
     }

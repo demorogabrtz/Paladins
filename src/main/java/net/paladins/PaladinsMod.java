@@ -63,6 +63,8 @@ public class PaladinsMod implements ModInitializer {
         itemConfig.refresh();
         shieldConfig.refresh();
         tweaksConfig.refresh();
+        villageConfig.refresh();
+        SoundHelper.registerSounds();
         Group.PALADINS = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Armors.paladinArmorSet_t2.head))
                 .displayName(Text.translatable("itemGroup.paladins.general"))
@@ -75,12 +77,8 @@ public class PaladinsMod implements ModInitializer {
         Armors.register(itemConfig.value.armor_sets);
         shieldConfig.save();
         itemConfig.save();
-
-        villageConfig.refresh();
         Effects.register();
         PaladinVillagers.register();
-
-        SoundHelper.registerSounds();
         subscribeEvents();
     }
 
@@ -90,7 +88,7 @@ public class PaladinsMod implements ModInitializer {
     static {
         BarrierEntity.TYPE = Registry.register(
                 Registries.ENTITY_TYPE,
-                new Identifier(ID, "barrier"),
+                Identifier.of(ID, "barrier"),
                 FabricEntityTypeBuilder.<BarrierEntity>create(SpawnGroup.MISC, BarrierEntity::new)
                         .dimensions(EntityDimensions.fixed(1F, 1F))
                         .fireImmune()
@@ -100,7 +98,7 @@ public class PaladinsMod implements ModInitializer {
         );
         BannerEntity.ENTITY_TYPE = Registry.register(
                 Registries.ENTITY_TYPE,
-                new Identifier(ID, "battle_banner"),
+                Identifier.of(ID, "battle_banner"),
                 FabricEntityTypeBuilder.<BannerEntity>create(SpawnGroup.MISC, BannerEntity::new)
                         .dimensions(EntityDimensions.changing(6F, 0.5F)) // dimensions in Minecraft units of the render
                         .fireImmune()

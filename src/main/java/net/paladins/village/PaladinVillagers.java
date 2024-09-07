@@ -20,6 +20,7 @@ import net.paladins.block.PaladinBlocks;
 import net.paladins.item.Weapons;
 import net.paladins.item.armor.Armors;
 import net.paladins.item.armor.PaladinArmor;
+import net.paladins.util.SoundHelper;
 import net.runes.api.RuneItems;
 
 import java.util.List;
@@ -28,13 +29,13 @@ public class PaladinVillagers {
     public static final String PALADIN_MERCHANT = "monk";
 
     public static PointOfInterestType registerPOI(String name, Block block) {
-        return PointOfInterestHelper.register(new Identifier(PaladinsMod.ID, name),
+        return PointOfInterestHelper.register(Identifier.of(PaladinsMod.ID, name),
                 1, 10, ImmutableSet.copyOf(block.getStateManager().getStates()));
     }
 
     public static VillagerProfession registerProfession(String name, RegistryKey<PointOfInterestType> workStation) {
-        var id = new Identifier(PaladinsMod.ID, name);
-        return Registry.register(Registries.VILLAGER_PROFESSION, new Identifier(PaladinsMod.ID, name), new VillagerProfession(
+        var id = Identifier.of(PaladinsMod.ID, name);
+        return Registry.register(Registries.VILLAGER_PROFESSION, Identifier.of(PaladinsMod.ID, name), new VillagerProfession(
                 id.toString(),
                 (entry) -> {
                     return entry.matchesKey(workStation);
@@ -44,7 +45,7 @@ public class PaladinVillagers {
                 },
                 ImmutableSet.of(),
                 ImmutableSet.of(),
-                PaladinArmor.equipSound)
+                SoundHelper.paladin_armor_equip.sound())
         );
     }
 
@@ -79,7 +80,7 @@ public class PaladinVillagers {
         var poi = registerPOI(PALADIN_MERCHANT, PaladinBlocks.MONK_WORKBENCH);
         var profession = registerProfession(
                 PALADIN_MERCHANT,
-                RegistryKey.of(Registries.POINT_OF_INTEREST_TYPE.getKey(), new Identifier(PaladinsMod.ID, PALADIN_MERCHANT)));
+                RegistryKey.of(Registries.POINT_OF_INTEREST_TYPE.getKey(), Identifier.of(PaladinsMod.ID, PALADIN_MERCHANT)));
 
         List<Offer> paladinMerchantOffers = List.of(
                 Offer.sell(1, new ItemStack(RuneItems.get(RuneItems.RuneType.HEALING), 8), 2, 128, 1, 0.01f),
@@ -102,13 +103,13 @@ public class PaladinVillagers {
             );
 
         for(var offer: paladinMerchantOffers) {
-            TradeOfferHelper.registerVillagerOffers(profession, offer.level, factories -> {
-                factories.add(((entity, random) -> new TradeOffer(
-                        offer.input,
-                        offer.output,
-                        offer.maxUses, offer.experience, offer.priceMultiplier)
-                ));
-            });
+//            TradeOfferHelper.registerVillagerOffers(profession, offer.level, factories -> {
+//                factories.add(((entity, random) -> new TradeOffer(
+//                        offer.input,
+//                        offer.output,
+//                        offer.maxUses, offer.experience, offer.priceMultiplier)
+//                ));
+//            });
         }
         TradeOfferHelper.registerVillagerOffers(profession, 5, factories -> {
             factories.add(((entity, random) -> new TradeOffers.SellEnchantedToolFactory(

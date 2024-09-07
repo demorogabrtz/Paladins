@@ -25,14 +25,14 @@ public class PaladinsClientMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         CustomModels.registerModelIds(List.of(
-                new Identifier(PaladinsMod.ID, "projectile/judgement"),
+                Identifier.of(PaladinsMod.ID, "projectile/judgement"),
                 DivineProtectionRenderer.modelId_base,
                 DivineProtectionRenderer.modelId_overlay,
                 BannerEntityRenderer.modelId
         ));
-        CustomModelStatusEffect.register(Effects.DIVINE_PROTECTION, new DivineProtectionRenderer());
-        CustomParticleStatusEffect.register(Effects.JUDGEMENT, new StunParticleSpawner());
-        CustomParticleStatusEffect.register(Effects.ABSORPTION, new AbsorbParticleSpawner());
+        CustomModelStatusEffect.register(Effects.DIVINE_PROTECTION.effect, new DivineProtectionRenderer());
+        CustomParticleStatusEffect.register(Effects.JUDGEMENT.effect, new StunParticleSpawner());
+        CustomParticleStatusEffect.register(Effects.ABSORPTION.effect, new AbsorbParticleSpawner());
         BlockRenderLayerMap.INSTANCE.putBlock(PaladinBlocks.MONK_WORKBENCH, RenderLayer.getCutout());
 
         EntityRendererRegistry.register(BarrierEntity.TYPE, BarrierEntityRenderer::new);

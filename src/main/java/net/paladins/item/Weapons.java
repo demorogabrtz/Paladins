@@ -25,9 +25,7 @@ public class Weapons {
 
     private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, ItemConfig.Weapon defaults) {
         var entry = new Weapon.Entry(PaladinsMod.ID, name, material, factory, defaults, null);
-        if (entry.isRequiredModInstalled()) {
-            entries.add(entry);
-        }
+        entries.add(entry);
         return entry;
     }
 

@@ -17,7 +17,7 @@ import net.spell_power.api.SpellPowerMechanics;
 import java.util.ArrayList;
 
 public class Effects {
-    private static ArrayList<Entry> entries = new ArrayList<>();
+    private static final ArrayList<Entry> entries = new ArrayList<>();
     public static class Entry {
         public final Identifier id;
         public final StatusEffect effect;

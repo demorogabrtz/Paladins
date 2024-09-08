@@ -20,7 +20,7 @@ Update priest Barrier spell:
   - Aeternium Kite Shield (BetterEnd exclusive)
   - Ruby Kite Shield (BetterNether exclusive)
 
-# 1.2.6R
+# 1.2.6
 
 - Fix some item tags
 

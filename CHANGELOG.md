@@ -1,3 +1,7 @@
+# 2.0.1
+
+- Bump item config version, to avoid crashing on migrated worlds
+
 # 2.0.0
 
 - Update to Minecraft 1.21.1
@@ -12,7 +16,6 @@ Update priest Barrier spell:
 
 # 1.3.0
 
-- Update several armor and weapon textures
 - Add new material tiered shields, providing attribute bonuses and high durability, custom visuals
   - Iron Kite Shield
   - Golden Kite Shield

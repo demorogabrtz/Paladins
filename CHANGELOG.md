@@ -1,3 +1,8 @@
+# 2.0.2
+
+- Update dependency declarations
+- Allow running on 1.21
+
 # 2.0.1
 
 - Bump item config version, to avoid crashing on migrated worlds

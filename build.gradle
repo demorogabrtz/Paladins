@@ -128,6 +128,7 @@ if(project.hasProperty('release_type')) {
                 requiredDependency 'spell-engine'
                 requiredDependency 'rune-crafting'
                 requiredDependency 'shield-api'
+                requiredDependency 'structure-pool-api'
             }
 
             mainArtifact(remapJar)
@@ -159,6 +160,7 @@ if(project.hasProperty('release_type')) {
             required.project 'spell-engine'
             required.project 'runes'
             required.project 'shield-api'
+            required.project 'structure-pool-api'
         }
     }
 

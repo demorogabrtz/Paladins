@@ -32,12 +32,13 @@
     "paladins.mixins.json"
   ],
   "depends": {
-    "minecraft": ">=1.20.1",
-    "fabricloader": ">=0.14.0",
+    "minecraft": ">=${minecraft_compat_version}",
+    "fabricloader": ">=${fabric_loader_version}",
     "azurelibarmor": "*",
     "spell_engine": ">=${spell_engine_version}",
     "spell_power": "*",
-    "runes": ">=${runes_version}"
+    "runes": ">=${runes_version}",
+    "structure_pool_api": "*"
   },
   "custom": {
     "modmenu": {

@@ -1,6 +1,7 @@
 # 2.0.0
 
 - Update to Minecraft 1.21.1
+- Update Paladin Helmet sprite :)
 
 # 1.3.1
 

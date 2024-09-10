@@ -7,7 +7,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.paladins.PaladinsMod;
@@ -208,7 +207,7 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
         }
         var relation = TargetHelper.getRelation(owner, other);
         switch (relation) {
-            case FRIENDLY, SEMI_FRIENDLY -> {
+            case ALLY, FRIENDLY -> {
                 return true;
             }
             case NEUTRAL, MIXED, HOSTILE -> {

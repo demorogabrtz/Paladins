@@ -1,3 +1,7 @@
+# 2.0.3
+
+- Fix breaking change with Spell Engine
+
 # 2.0.2
 
 - Update dependency declarations

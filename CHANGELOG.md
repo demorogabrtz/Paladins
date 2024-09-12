@@ -1,3 +1,7 @@
+# 2.0.4
+
+- Fix Barrier not knocking back hostile players
+
 # 2.0.3
 
 - Fix breaking change with Spell Engine

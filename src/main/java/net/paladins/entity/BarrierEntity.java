@@ -5,7 +5,11 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -182,6 +186,12 @@ public class BarrierEntity extends Entity implements SpellSpawnedEntity {
                         } else {
                             livingEntity.takeKnockback(PaladinsMod.tweaksConfig.value.barrier_knockback_strength,
                                     this.getX() - livingEntity.getX(), this.getZ() - livingEntity.getZ());
+                            if (livingEntity instanceof ServerPlayerEntity serverPlayer) {
+                                serverPlayer.networkHandler.send(
+                                        new EntityVelocityUpdateS2CPacket(serverPlayer.getId(), serverPlayer.getVelocity()),
+                                        null
+                                );
+                            }
                         }
                     }
                 }

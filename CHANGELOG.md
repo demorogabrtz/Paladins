@@ -1,6 +1,7 @@
 # 2.0.5
 
 - Judgement spell json specifying target requirement
+- Fireproof shields with Netherite or better material
 
 # 2.0.4
 

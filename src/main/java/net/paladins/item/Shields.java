@@ -17,6 +17,7 @@ import net.paladins.PaladinsMod;
 import net.paladins.config.ShieldsConfig;
 import net.paladins.util.SoundHelper;
 import net.spell_engine.api.item.ItemConfig;
+import net.spell_engine.api.item.Tiers;
 import net.spell_engine.api.item.weapon.Weapon;
 
 import java.util.ArrayList;
@@ -102,6 +103,7 @@ public class Shields {
             ), durability_t4);
         }
 
+        var netheriteTier = Tiers.unsafe("netherite");
         ArrayList<Item> shields = new ArrayList<>();
         for (var entry: ENTRIES) {
             var config = configs.get(entry.id.toString());
@@ -115,7 +117,12 @@ public class Shields {
             for (var modifier: Weapon.attributesFrom(config.attributes).modifiers()) {
                 shieldAttributes.add(new Pair<>(modifier.attribute(), modifier.modifier()));
             }
-            var shield = new CustomShieldItem(SoundHelper.shield_equip.entry(), entry.repair, shieldAttributes, new Item.Settings().maxDamage(config.durability));
+            var settings = new Item.Settings().maxDamage(config.durability);
+            var tier = Tiers.unsafe(entry.id());
+            if (tier >= netheriteTier) {
+                settings.fireproof();
+            }
+            var shield = new CustomShieldItem(SoundHelper.shield_equip.entry(), entry.repair, shieldAttributes, settings);
             Registry.register(Registries.ITEM, entry.id, shield);
             shields.add(shield);
         }

@@ -1,3 +1,7 @@
+# 2.0.5
+
+- Judgement spell json specifying target requirement
+
 # 2.0.4
 
 - Fix Barrier not knocking back hostile players

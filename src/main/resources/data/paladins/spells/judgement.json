@@ -26,6 +26,7 @@
     "target": {
       "type": "METEOR",
       "meteor": {
+        "requires_entity": true,
         "launch_height": 10,
         "projectile": {
           "homing_angle": 1.0,

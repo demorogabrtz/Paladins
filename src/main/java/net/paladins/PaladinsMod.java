@@ -32,7 +32,7 @@ public class PaladinsMod implements ModInitializer {
     public static final String ID = "paladins";
 
     public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<>
-            ("items_v6", Default.itemConfig)
+            ("items_v7", Default.itemConfig)
             .builder()
             .setDirectory(ID)
             .sanitize(true)

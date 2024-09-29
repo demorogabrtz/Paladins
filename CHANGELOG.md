@@ -1,3 +1,9 @@
+# 2.1.0
+
+- Add new armor set: Netherite Crusader Armor
+- Add new armor set: Netherite Prior Robes
+- Rebalance armor and weapon attributes
+
 # 2.0.5
 
 - Judgement spell json specifying target requirement

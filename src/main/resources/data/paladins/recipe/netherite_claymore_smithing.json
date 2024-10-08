@@ -4,10 +4,10 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "paladins:crusader_armor_chest"
+    "item": "paladins:diamond_claymore"
   },
   "result": {
-    "id": "paladins:netherite_crusader_armor_chest"
+    "id": "paladins:netherite_claymore"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

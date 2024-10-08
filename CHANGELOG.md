@@ -1,3 +1,7 @@
+# 2.1.1
+
+- Fix Netherite Claymore recipe
+
 # 2.1.0
 
 - Add new armor set: Netherite Crusader Armor
